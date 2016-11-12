@@ -13,22 +13,25 @@
 <script>
     'use strict'
     var a = 1;
+    let b = 7;
     if(true){
         let b = 2;
         a = 5;
     }
-    try {debug(a);} catch (e){console.log(e);};
-    try {debug(b);} catch (e){console.log(e);};
-    const c = 3;
-    try {debug(c);} catch (e){console.log(e);};
+    debug(a);
+    debug(b);
 
+    const c = {};
+    c.name = "csh";
+    debug(c);
 
     function testRest(a,b,...args){
         console.log(a,b,args);
         console.log(args);
     }
 
-    testRest(1,2,3,4,5,6,7)
+    testRest(1,2,3,4,5,6,7);
+    console.log("output : %d ", 250+a+b, "csh" );
 
 </script>
 </body>

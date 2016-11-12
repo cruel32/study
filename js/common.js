@@ -1,6 +1,6 @@
 "use strict";
-const _eleWrap = document.querySelector(".wrap");
-const debug = function(msg){
+var _eleWrap = document.querySelector(".wrap");
+var debug = function(msg){
     console.log(msg);
     if(msg) {
         let div = document.createElement("div");
