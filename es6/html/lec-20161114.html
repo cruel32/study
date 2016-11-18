@@ -51,9 +51,26 @@
     //myFunction(undefined);
     myFunction({profession:"black"});
 
+    let testArr = (a,b) => {
+        debug(a,b);
+    }
+    testArr(50,100);
 
-
-
+    let craft = 5;
+    let testArrow = {
+        func(){
+            console.log("func", this);
+        },
+        func2 : () => {
+            console.log("func2",this);
+        },
+        craft,
+        testArr,
+        ["craft"+craft] : 10
+    };
+    testArrow.func();
+    testArrow.func2();
+    debug(testArrow);
 
 </script>
 </body>
