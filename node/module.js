@@ -5,3 +5,9 @@ exports.abs = function(number){
         return -number;
     }
 }
+
+exports.timer = new process.EventEmitter();
+
+setInterval(function(){
+    exports.timer.emit("tick");
+},3000);
