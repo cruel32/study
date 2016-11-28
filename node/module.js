@@ -8,6 +8,6 @@ exports.abs = function(number){
 
 exports.timer = new process.EventEmitter();
 
-setInterval(function(){
+setTimeout(function(){
     exports.timer.emit("tick");
 },3000);
