@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/es6/index.html">목록</a>
+    <h1>2_라이브러리. 배열</h1>
+</div>
+<script src="/js/common.js"></script>
+<script>
+    'use strict'
+
+    //Array.from
+    let arrBefore = [0,1,2,3,4];
+    let obj = {number : 1};
+    let arrFrom = Array.from(arrBefore,function(val){
+        return val+this.number
+    },obj);
+    console.log(arrFrom);
+
+    let arr1 = [2,5,7,34,3,4,34];
+    arr1.fill(5);
+
+    console.log(arr1);
+
+    //Array.find(testingFunc, this), Array.findIndex(testingFunc, this)
+    let x = {name : 3};
+    let y = [1,2,3,5];
+    let res = y.find(function(v,i){
+        return v == this.name
+    },x);
+    console.log(res);
+
+    let res2 = y.findIndex(function(v,i){
+        return v == this.name
+    },x);
+    console.log(res2);
+
+    let a = ["a","b","c"];
+    console.log( ...a.entries() );
+
+
+
+</script>
+</body>
+</html>

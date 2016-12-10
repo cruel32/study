@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/es6/index.html">목록</a>
+    <h1>3_라이브러리. 이터레이터</h1>
+</div>
+<script src="/js/common.js"></script>
+<script>
+    'use strict'
+
+    let obj = [1,2,3,4,5];
+    console.log(obj);
+
+    let iterable = obj[Symbol.iterator]();
+    console.log( iterable.next().value );
+    console.log( iterable.next().value );
+    console.log( iterable.next().value );
+    console.log( iterable.next().value );
+    console.log( iterable.next().value );
+    console.log( iterable.next().done );
+    console.log( iterable.next().done );
+
+    let maps = new Map();
+    maps.set("key1",1);
+    maps.set("key2",1);
+
+    console.log(maps);
+    for(let [key,val] of maps){
+        console.log( `${key} : ${val}` );
+    }
+
+    console.log( maps.values());
+
+
+</script>
+</body>
+</html>
