@@ -13,6 +13,25 @@
 <script>
     'use strict'
 
+    //Array.some
+    let someArr = [1,5,6,2,3,4];
+    let someResult = someArr.some(function(item,index,arr){
+        return item == 3;
+    })
+    console.log(`someResult : ${someResult}`);
+
+    let everyArr = [5,1,4,5,3,6,7,2,9];
+    let everyResult = everyArr.every(function(item,index,arr){
+        return item < 10;
+    })
+    console.log("everyResult : ",everyResult);
+
+    let filterArr = [5,1,4,5,3,6,7,2,9];
+    let filterResult = filterArr.filter(function(item,index,arr){
+        return item < 5;
+    })
+    console.log("filterResult : ", filterResult);
+
     //Array.from
     let arrBefore = [0,1,2,3,4];
     let obj = {number : 1};
@@ -42,7 +61,17 @@
     let a = ["a","b","c"];
     console.log( ...a.entries() );
 
+    let numbers = [1,5,3,4,6];
+    console.log( numbers );
 
+    let numbers2 = numbers.reduce(function(prev, current, index, arr){
+        console.log(`prev : ${prev}
+        current : ${current}
+        index : ${index}
+        arr : ${arr} `);
+        return prev+current
+    },10);
+    console.log( numbers2 );
 
 </script>
 </body>
