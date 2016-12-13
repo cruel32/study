@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/es6/index.html">목록</a>
+    <h1>3_라이브러리. Reflect</h1>
+</div>
+<script src="/js/common.js"></script>
+<script>
+    'use strict'
+
+    function constructor1(a,b){
+        this.a = a;
+        this.b = b;
+        this.f = function(){
+            return this.a + this.b + this.c
+        }
+    }
+
+    function constructor2(){}
+    constructor2.prototype.c = 100;
+
+    var myObj = Reflect.construct(constructor1,[1,2],constructor2);
+
+    console.log( myObj );
+    console.log( myObj.f() );
+
+    let customObj = {};
+
+    Reflect.defineProperty(customObj,"name",{
+        get : function(){
+            return this.__name__
+        },
+        set : function(newName){
+            this.__name__ = newName
+        },
+        configurable : true,
+        enumerable : true
+    })
+
+    customObj.name = "승승이";
+    console.log(`customObj : `, customObj );
+
+    let name = Reflect.get(customObj,"name",{__name__ : "샤이니"});
+    console.log(`name : `, name);
+    
+    let n = Reflect.get(customObj,"name",{__name__ : "샤샤샤"})
+    console.log(`n : `, n);
+
+
+    let obj1 = {
+        __name__ : "수지"
+    };
+
+    Reflect.defineProperty(obj1,"name", {
+        set(newName){
+            this.__name__ = newName;
+        },
+        get(){
+            return this.__name__;
+        }
+    });
+
+    let obj2 = {
+        __name__ : "민호"
+    }
+
+    Reflect.set(obj1, "name", "", obj2);
+
+    console.log("obj1 : ", obj1);
+    console.log("obj2 : ", obj2);
+
+    //Reflect.getOwnPropertyDescriptor(object,property)
+
+    //Reflect.getPrototypeOf(object)
+
+    //Reflect.setPrototypeOf(object,prototype);
+
+    //Reflect.has(object,property)
+
+    //Reflect.isExtensible(object);
+    
+
+
+</script>
+</body>
+</html>
