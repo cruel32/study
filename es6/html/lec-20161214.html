@@ -12,11 +12,9 @@
 <script src="/js/common.js"></script>
 <script>
     'use strict'
-<<<<<<< HEAD
-    
     class School {
         constructor(name){
-            this._name_ = name;
+        this._name_ = name;
         }
         get name(){
             return this._name_
@@ -25,44 +23,44 @@
             this._name_ = name;
         }
     }
-=======
-     let object1 = {
-     	name : "수지",
-     	__proto__ : {age : "25"}
-     };
 
-     let object2 = {
-     	name : "민호"
-     };
+    let object1 = {
+        name : "수지",
+        __proto__ : {age : "25"}
+    };
 
-     Object.setPrototypeOf(object2,{age:29})
+    let object2 = {
+        name : "민호"
+    };
 
-     let object3 = Object.create({name:"승희"},{name:{value:"수지"}});
+    Object.setPrototypeOf(object2,{age:29})
 
-     let object4 = function(name){
-     	this.name = name;
-     };
-     object4.prototype.age = 33;
+    let object3 = Object.create({name:"승희"},{name:{value:"수지"}});
 
-     console.log("object1 : ", object1);
-     console.log("object2 : ", object2);
-     console.log("object3 : ", object3);
-     console.log("object4 : ", object4);
+    let object4 = function(name){
+        this.name = name;
+    };
+    object4.prototype.age = 33;
 
-     let s1 = "문자열";
-     let s2 = new String("문자열");
+    console.log("object1 : ", object1);
+    console.log("object2 : ", object2);
+    console.log("object3 : ", object3);
+    console.log("object4 : ", object4);
 
-     console.log("s1 : ", s1);
-     console.log("s2 : ", s2);
+    let s1 = "문자열";
+    let s2 = new String("문자열");
 
-     console.log(typeof s1);
-     console.log(typeof s2);
+    console.log("s1 : ", s1);
+    console.log("s2 : ", s2);
 
-     console.log(s1 == s2);
-     console.log(s1.length);
+    console.log(typeof s1);
+    console.log(typeof s2);
+
+    console.log(s1 == s2);
+    console.log(s1.length);
 
 
-        function A(a){
+    function A(a){
         this.a = a;
     }
     A.prototype.printA = function(){
@@ -71,12 +69,12 @@
 
     /*
     class A {
-        construcotr(a){
-            this.a = a;
-        }
-        printA(){
-            console.log(this.a);
-        }
+    construcotr(a){
+        this.a = a;
+    }
+    printA(){
+        console.log(this.a);
+    }
     }
     */
 
@@ -150,7 +148,6 @@
 
     console.log( arr1 instanceof Array );
     console.log( arr2 instanceof Array );
->>>>>>> study/master
 
     let school = new School("gg");
     school.name = "gbc";
