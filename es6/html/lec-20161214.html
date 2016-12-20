@@ -13,7 +13,21 @@
 <script>
     'use strict'
     
+    class School {
+        constructor(name){
+            this._name_ = name;
+        }
+        get name(){
+            return this._name_
+        }
+        set name(name){
+            this._name_ = name;
+        }
+    }
 
+    let school = new School("gg");
+    school.name = "gbc";
+    console.log( school._name_ );
 </script>
 </body>
 </html>
