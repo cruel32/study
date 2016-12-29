@@ -1,29 +1,31 @@
-var http = require("http");
-var url = require("url");
-var fs = require("fs");
-var pug = require("pug");
+var express = require("express");
+var app = express();
 
-//서버실행
-http.createServer(function(request,response){
-    var pathname = url.parse(request.url).pathname;
-    if(pathname == "/"){
-        fs.readFile("/work/study/node/pug/index.pug", function(error,data){
-            var fn = pug.compile(data);
-            response.writeHead(200,{"Content-Type" : "text/html"});
-            response.end( fn() );
-        })
-    } else if(pathname == "/otherPage"){
-        fs.readFile("/work/study/node/pug/otherPage.pug",function(error,data){
-            var module = require("/work/study/node/request/module.js");
-            module.timer.on("tick",function(code){
-                console.log("실행")
-            });
-            var fn = pug.compile(data);
-            response.writeHead(200,{"Content-Type" : "text/html"});
-            response.end( fn() );
-        })
-    }
-}).listen(52273,function(){
-   console.log("Server Running at http://127.0.0.1:52273");
+var routerA = express.Router();
+var routerB = express.Router();
+
+app.get("/page/:id",function(request,response){
+    var name = request.params.id;
+    response.send(`<h1>${name} Page</h1>`);
 });
 
+routerA.get("/index", function(request,response){
+    var agent = request.header("User-Agent"); console.log("request.headers : ", request.headers, " agent : ", agent);
+    response.send(`<h1>hello routerA</h1>`);
+});
+
+routerB.get("/index", function(request,response){
+    //query
+    var name = request.query.name; console.log("name : ", name);
+    var region = request.query.region; console.log("region : ", region);
+    response.send(`<h1>hello routerB</h1>`);
+});
+
+app.use(routerA);
+app.use("/a", routerA);
+app.use("/b", routerB);
+
+
+app.listen(52273,function(){
+    console.log("Server Running at http:127.0.0.1:52273");
+})
