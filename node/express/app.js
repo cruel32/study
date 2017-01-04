@@ -21,7 +21,10 @@ routerB.get("/index", function(request,response){
     response.send(`<h1>hello routerB</h1>`);
 });
 
-app.use(routerA);
+app.use("/",function(request,response){
+    response.send(`<h1>hello root</h1>`);
+});
+
 app.use("/a", routerA);
 app.use("/b", routerB);
 
