@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 
-console.log("gg");
+console.log(`__dirname : ${__dirname}`);
 app.use(express.static(__dirname));
 
 app.listen(52273,function(){
