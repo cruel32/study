@@ -1,0 +1,22 @@
+{
+  "name": "bower",
+  "homepage": "https://github.com/cruel32/study",
+  "authors": [
+    "cruel32 <cshee8508@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "1.10",
+    "bootstrap": "^3.3.7",
+    "jquery-ui": "^1.12.1"
+  }
+}
