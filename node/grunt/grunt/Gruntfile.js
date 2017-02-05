@@ -1,18 +1,29 @@
 module.exports = (grunt)=>{
+    require("time-grunt")(grunt);
+    require("jit-grunt")(grunt);
     // 가) 프로젝트 환경설정.
     grunt.initConfig({
         pkg : grunt.file.readJSON("package.json"),
         includes: {
             dist: {
                 expand: true,
-                cwd: './',
+                cwd: 'project/',
                 src: ['html/**/*.html'],
                 dest: 'dest',
                 options: {
-                    flatten: true,
-                    includePath: '/include/'
+                    flatten : true,
+                    includePath : 'project/include/',
+                    includeRegexp : /^(\s*)##include\s+"(\S+)"\s*$/
                 }
             }
+        },
+        htmlhint : {
+            options : {
+                htmlhintrc : "hint/.htmlhintrc"
+            },
+            dist : [
+                "dest/**/*.html"
+            ]
         }
     });
 
@@ -33,9 +44,9 @@ module.exports = (grunt)=>{
 
     });
     */
-    require("grunt-includes")(grunt);
     grunt.registerTask('default', [
-        'includes'
+        "includes",
+        "htmlhint"
     ]);
-
+    
 }

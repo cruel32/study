@@ -11,7 +11,6 @@
   "devDependencies": {
     "grunt": "*",
     "grunt-includes": "*",
-    "grunt-autoprefixer" : "*",
     "grunt-concurrent" : "*",
     "grunt-contrib-copy" : "*",
     "grunt-contrib-concat" : "*",
@@ -20,7 +19,6 @@
     "grunt-contrib-cssmin" : "*",
     "grunt-contrib-imagemin" : "*",
     "grunt-contrib-jshint" : "*",
-    "grunt-contrib-less" : "*",
     "grunt-contrib-uglify" : "*",
     "grunt-contrib-watch" : "*",
     "grunt-csscomb" : "*",
@@ -28,6 +26,9 @@
     "grunt-newer" : "*",
     "jshint-stylish" : "*",
     "load-grunt-tasks" : "*",
-    "time-grunt" : "*"
+    "time-grunt" : "*",
+    "jit-grunt" : "*",
+    "grunt-sass" : "*",
+    "grunt-postcss" : "*"
   }
 }
