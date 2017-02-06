@@ -102,6 +102,7 @@ module.exports = (grunt)=>{
         jshint : {
             options: {
                 jshintrc : `hint/.jshintrc`,
+                force : true,
                 // force: true, // error 검출시 task를 fail 시키지 않고 계속 진단
                 reporter : require(`jshint-stylish`) // output을 수정 할 수 있는 옵션
             },
