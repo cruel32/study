@@ -28,7 +28,8 @@
     "load-grunt-tasks" : "*",
     "time-grunt" : "*",
     "jit-grunt" : "*",
-    "grunt-sass" : "*",
-    "grunt-postcss" : "*"
+    "grunt-contrib-sass" : "*",
+    "grunt-postcss" : "*",
+    "autoprefixer" : "*"
   }
 }
