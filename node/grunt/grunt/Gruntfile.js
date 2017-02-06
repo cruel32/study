@@ -1,250 +1,269 @@
 module.exports = (grunt)=>{
-    require("time-grunt")(grunt);
-    require("jit-grunt")(grunt);
+    `use strict`;
+    let origin = "origin";
+    let project = "project";
+
+    require(`time-grunt`)(grunt);
+    require(`jit-grunt`)(grunt);
+
     // 가) 프로젝트 환경설정.
     grunt.initConfig({
-        pkg : grunt.file.readJSON("package.json"),
+        pkg : grunt.file.readJSON(`package.json`),
         includes: {
-            dist: {//distribute
-                expand: true,
-                cwd: 'project/',
-                src: ['html/**/*.html'],
-                dest: 'dest', //destination
-                options: {
+            dist : {//distribute
+                expand : true,
+                cwd : `${origin}/`,
+                src : [`html/**/*.html`],
+                dest : `${project}`, //destination
+                options : {
                     flatten : true,
-                    includePath : 'project/include/',
+                    includePath : `${origin}/include/`,
                     includeRegexp : /^(\s*)##include\s+"(\S+)"\s*$/
                 }
             }
         },
         htmlhint : {
             options : {
-                htmlhintrc : "hint/.htmlhintrc"
+                htmlhintrc : `hint/.htmlhintrc`
             },
             dist : [
-                "dest/**/*.html"
+                `${project}/**/*.html`
             ]
         },
         // CSS를 만듭니다.
         sass : {
             options : {
                 sourceComments : false,
-                sourceMap : true,
-                outputStyle : "expanded" //nested, expanded, compact, compressed
+                sourceMap : false,//true,
+                outputStyle : `expanded` //nested, expanded, compact, compressed
             },
             dist : {
                 expand : true,
-                cwd : "<%= config.src %>/scss/",
-                src : ["**/*.{sass,scss}"],
-                dest : "<%= config.dest %>/css/",
-                ext : ".css"
+                cwd : `${origin}/sass`,
+                src : [`**/*.{sass,scss}`],
+                dest : `${project}/css/`,
+                ext : `.min.css`
             }
         },
         // 벤더프리픽스를 추가합니다.
-        postcss : {
-            options : {
-                processors : [
-                    require("autoprefixer")({
-                        browsers : [
-                            "Android 2.3",
-                            "Android >=4",
-                            "chrome >= 20",
-                            "Firefox >= 24",
-                            "Explorer >= 8",
-                            "iOS >= 6",
-                            "Opera >= 12",
-                            "Safari <= 6"
+        postcss: {
+            options: {
+                processors: [
+                    require(`autoprefixer`)({
+                        browsers: [
+                            `Android 2.3`,
+                            `Android >= 4`,
+                            `Chrome >= 20`,
+                            `Firefox >= 24`,
+                            `Explorer >= 8`,
+                            `iOS >= 6`,
+                            `Opera >= 12`,
+                            `Safari >= 6`
                         ]
                     })
                 ]
             },
-            dist : {
-                src: "<%= config.dest %>/css/*.css"
-            }
-        },
-        // css 구문검사를 합니다.
-        csslint : {
-            options : {
-                csslintrc : "hint/.csshintrc"
-            },
-            dist : {
-                src : "dest/**/*.css"
+            dist: {
+                src: `${project}/css/*.css`,
             }
         },
         // css 의 속성을 정렬해줍니다.
         csscomb : {
             options : {
-                config : "hint/.csscomb.json"
+                config : `hint/.csscomb.json`
             },
             dist : {
                 expand: true,
-                cwd: 'dest/css/',
-                src: ["*.css","!*.min.css"],
-                dest: 'dest'
+                cwd : `${project}/css/`,
+                src : `**/*.min.css`,
+                dest : `${project}/css/`
             }
         },
         // css 를 압축합니다.
         cssmin: {
-            options: {
+            options : {
                 // noAdvanced: true
-                compatibility: 'ie9',
-                keepSpecialComments: '*',
-                sourceMap: true,
-                advanced: false
+                compatibility : `ie9`,
+                keepSpecialComments : `*`,
+                sourceMap : false, //true,
+                advanced : false
             },
             dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'dest/css',
-                    src: ['*.css', '!*.min.css'],
-                    dest: 'dest/css',
-                    ext: '.min.css'
+                files : [{
+                    expand : true,
+                    cwd : `${project}/css/`,
+                    src : [`**/*.css`, `**/!*.min.css`],
+                    dest : `${project}/css/`,
+                    ext : `.min.css`
                 }]
             }
         },
         // 자바스크립트 구문검사를 합니다.
-        jshint: {
+        jshint : {
             options: {
-                jshintrc: 'hint/.jshintrc',
+                jshintrc : `hint/.jshintrc`,
                 // force: true, // error 검출시 task를 fail 시키지 않고 계속 진단
-                reporter: require('jshint-stylish') // output을 수정 할 수 있는 옵션
+                reporter : require(`jshint-stylish`) // output을 수정 할 수 있는 옵션
             },
-            grunt: {
-                src: ['Gruntfile.js']
+            grunt : {
+                src : [`Gruntfile.js`]
             },
-            dist: {
-                src: 'project/js/*.js'
+            dist : {
+                src : `${origin}/js/**/*.js`
             }
         },
         // 파일을 합칩니다.
-        concat: {
-            options: {
-                
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                '<%= grunt.template.today("yyyy-mm-dd") %> */'
+        concat : {
+            options : {
+                banner : `/*! <%= pkg.name %> - v<%= pkg.version %> - ` +
+                `<%= grunt.template.today("yyyy-mm-dd") %> */`
             },
-            dist: {
-                src: 'project/js/*.js',
-                dest: 'dest/js/site.js'
+            dist : {
+                src : `${origin}/js/*.js`,
+                dest : `${project}/js/default.min.js`
             }
         },
 
         // 압축합니다.
-        uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                '<%= grunt.template.today("yyyy-mm-dd") %> */'
+        uglify : {
+            options : {
+                banner : `/*! <%= pkg.name %> - v<%= pkg.version %> - ` +
+                `<%= grunt.template.today("yyyy-mm-dd") %> */`
             },
-            dist: {
-                src: 'dest/js/site.js',
-                dest: 'dest/js/site.min.js'
+            dist : {
+                src : `${project}/js/default.min.js`,
+                dest : `${project}/js/default.min.js`
             }
         },
 
         // 폴더 및 파일을 삭제합니다.
-        clean: {
-            dist: {
-                files: [{
-                    src: 'dest'
+        clean : {
+            dist : {
+                files : [{
+                    src : `${project}`
                 }]
             },
         },
 
         // 폴더 및 파일을 복사합니다.
-        copy: {
-            dist: {
-                files: [ 
-                    // fonts
-                    // {
-                    //     expand: true,
-                    //     cwd: 'src/fonts/',
-                    //     src: '**',
-                    //     dest: 'dest/fonts/'
-                    // },
+        copy : {
+            dist : {
+                files : [ 
+                    //fonts
+                    {
+                        expand: true,
+                        cwd: `${origin}/fonts/`,
+                        src: `**`,
+                        dest: `${project}/fonts/`
+                    }
                 ]
             }
         },
 
         // 이미지를 최적화 합니다.
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'project/images/',
-                    src: '**/*.{png,jpeg,jpg,gif}',
-                    dest: 'dest/images/'
-                }]
-            }
-        },
+        // imagemin : {
+        //     options : {
+        //         optimizationLevel : 7
+        //     },
+        //     dist : {
+        //         files : [{
+        //             expand : true,
+        //             cwd : `${origin}/images/`,
+        //             src : `**/*.{png,jpeg,jpg,gif}`,
+        //             dest : `${project}/images/**/`
+        //         }]
+        //     }
+        // },
 
-        // 병렬로 작업을 실행합니다.
-        concurrent: {
+        //이미지를 최적화 합니다.
+        image: {
             options: {
-                logConcurrentOutput: true
+                pngquant: true,
+                optipng: false,
+                zopflipng: true,
+                jpegRecompress: false,
+                jpegoptim: true,
+                mozjpeg: true,
+                gifsicle: true,
+                svgo: true
             },
-            dist: [
-                'copy',
-                'imagemin'
-            ]
+            files: {
+                expand: true,
+                cwd:  `${origin}/images/`,
+                src: ['**/*.{png,jpg,gif,svg}'],
+                dest: `${project}/images/`
+            }
         },
 
         // 감시를 합니다.
-        watch: {
-            options: { livereload: true },
-            gruntfile: {
-                files: ['Gruntfile.js'],
-                tasks: ['jshint:grunt']
+        watch : {
+            options : { livereload: true },
+            gruntfile : {
+                files : [`Gruntfile.js`],
+                tasks : [`newer:jshint:grunt`]
             },
-            html: {
-                files: ['project/**/*.html'],
-                tasks: ['includes','htmlhint']
+            html : {
+                files : [`${origin}/**/*.html`],
+                tasks : [`newer:includes`,`htmlhint`]
             },
-            sass: {
-                files: ['src/css/**/*.sass'],
-                tasks: ['sass','csslint','autoprefixer','csscomb','cssmin']
+            sass : {
+                files : [`${origin}/sass/**/*.{sass,scss}`],
+                tasks : [`newer:sass`,`postcss`,`csscomb`,`cssmin`]
             },
-            js: {
-                files: ['project/js/**/*.js'],
-                tasks: ['jshint','concat','uglify']
+            js : {
+                files : [`${origin}/js/**/*.js`],
+                tasks : [`newer:jshint`,`concat`,`uglify`]
             },
-            img: {
-                files: ['project/images/**/*.{gif,jpeg,jpg,png}'],
-                tasks: ['newer:imagemin']
-            },
-            fonts: {
-                files: ['project/fonts/**/*'],
-                tasks: ['newer:copy']
+            img : {
+                files : [`${origin}/images/**/*.{gif,jpeg,jpg,png}`],
+                tasks : [`newer:image`]
             }
+            
+            //fonts : {
+            //    files : [`${origin}/fonts/**/*`],
+            //    tasks : [`newer:copy`]
+            //}
+        },
+
+        // 병렬로 작업을 실행합니다.
+        concurrent : {
+            options : {
+                logConcurrentOutput : true
+            },
+            dist : [
+                `copy`,
+                `image`
+            ]
         },
 
         // 서버를 열어서 브라우져에서 확인합니다.
-        connect: {
-            server: {
-                options: {
-                    port: 9000,
-                    hostname: 'localhost',
-                    livereload: 35729,
+        connect : {
+            server : {
+                options : {
+                    port : 52273,
+                    hostname : `localhost`,
+                    livereload : 35729,
                     // keepalive: true,
-                    base: 'dest',
-                    open: 'http://<%= connect.server.options.hostname %>:<%= connect.server.options.port %>/category1/page-01.html'
+                    base : `${project}`,
+                    open : `http://<%= connect.server.options.hostname %>:<%= connect.server.options.port %>/html/index.html`
                 }
             }
         },
     });
 
     // 나) 플러그인 로드.
-    //grunt.loadNpmTasks('grunt-includes');
+    //grunt.loadNpmTasks(`grunt-includes`);
 
     // 다) task 실행.
     /* 
-    grunt.registerTask('serve', (target)=>{
-        if (target === 'dist') {
-            return grunt.task.run(['connect', 'watch']);
+    grunt.registerTask(`serve`, (target)=>{
+        if (target === `dist`) {
+            return grunt.task.run([`connect`, `watch`]);
         }
         grunt.task.run([
-            'default',
-            'connect',
-            'watch'
+            `default`,
+            `connect`,
+            `watch`
         ]);
 
     });
@@ -252,53 +271,54 @@ module.exports = (grunt)=>{
     
     
     // 작업을 로드합니다.
-    // grunt.loadNpmTasks('grunt-contrib-jshint');
+    // grunt.loadNpmTasks(`grunt-contrib-jshint`);
 
-    grunt.registerTask('serve', function (target) {
-        if (target === 'dist') {
-            return grunt.task.run(['connect', 'watch']);
+    grunt.registerTask(`serve`, (target)=>{
+        grunt.task.run([`connect`, `watch`]);
+        /*
+        if (target === origin) {
+            return grunt.task.run([`connect`, `watch`]);
         }
 
         grunt.task.run([
-            'default',
-            'connect',
-            'watch'
+            `default`,
+            `connect`,
+            `watch`
         ]);
-
+        */
     });
 
     // html task
-    grunt.registerTask('html', [
-            'includes',
-            'htmlhint'
+    grunt.registerTask(`html`, [
+            `includes`,
+            `htmlhint`
         ]
     );
 
     // css task
-    grunt.registerTask('css', [
-            // 'clean',
-            'sass',
-            'csslint',
-            'autoprefixer',
-            'csscomb',
-            'cssmin'
+    grunt.registerTask(`css`, [
+            // `clean`,
+            `sass`,
+            `postcss`,
+            `csscomb`,
+            `cssmin`
         ]
     );
 
     // javascript task
-    grunt.registerTask('jsnt', [
-            'jshint',
-            'concat',
-            'uglify'
+    grunt.registerTask(`jsnt`, [
+            `jshint`,
+            `concat`,
+            `uglify`
         ]
     );
 
-    grunt.registerTask('default', [
-        'clean',
-        'html',
-        'css',
-        'jsnt',
-        'concurrent'
+    grunt.registerTask(`default`, [
+        `clean`,
+        `html`,
+        `css`,
+        `jsnt`,
+        `concurrent`
     ]);
     
 }

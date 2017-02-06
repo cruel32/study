@@ -9,6 +9,7 @@
   "eqnull"   : true,
   "expr"     : true,
   "laxbreak" : true,
-  "quotmark" : "single",
-  "validthis": true
+  //"quotmark" : "single",
+  "validthis": true,
+  "esversion" : 6
 }
