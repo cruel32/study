@@ -29,6 +29,8 @@
     "jit-grunt": "*",
     "jshint-stylish": "*",
     "time-grunt": "*",
-    "grunt-image": "*"
+    "grunt-image": "*",
+    "grunt-webpack": "*",
+    "grunt-react": "*"
   }
 }
