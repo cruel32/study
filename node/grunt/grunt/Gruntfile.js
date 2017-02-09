@@ -114,28 +114,41 @@ module.exports = (grunt)=>{
             }
         },
         // 파일을 합칩니다.
-        concat : {
-            options : {
-                banner : `/*! <%= pkg.name %> - v<%= pkg.version %> - ` +
-                `<%= grunt.template.today("yyyy-mm-dd") %> */`
-            },
-            dist : {
-                src : `${origin}/js/*.js`,
-                dest : `${project}/js/default.min.js`
-            }
-        },
+        // concat : {
+        //     options : {
+        //         banner : `/*! <%= pkg.name %> - v<%= pkg.version %> - ` +
+        //         `<%= grunt.template.today("yyyy-mm-dd") %> */`
+        //     },
+        //     dist : {
+        //         src : `${origin}/js/*.js`,
+        //         dest : `${project}/js/default.min.js`
+        //     }
+        // },
 
-        // 압축합니다.
-        uglify : {
-            options : {
-                banner : `/*! <%= pkg.name %> - v<%= pkg.version %> - ` +
-                `<%= grunt.template.today("yyyy-mm-dd") %> */`
-            },
-            dist : {
-                src : `${project}/js/default.min.js`,
-                dest : `${project}/js/default.min.js`
+        webpack: {
+			dist: {
+                entry: { // 엔트리 파일 목록
+                    common : `./${origin}/js/common.js`,
+                    sub : `./${origin}/js/sub.js`,
+                },
+                output: {
+                    path: `./${project}/js`, // 번들 파일 폴더
+                    filename: '[name].bundle.js', // 번들 파일 이름 규칙
+                    publicPath: `./${project}/`
+                }
             }
-        },
+		},
+        // 압축합니다.
+        // uglify : {
+        //     options : {
+        //         banner : `/*! <%= pkg.name %> - v<%= pkg.version %> - ` +
+        //         `<%= grunt.template.today("yyyy-mm-dd") %> */`
+        //     },
+        //     dist : {
+        //         src : `${project}/js/default.min.js`,
+        //         dest : `${project}/js/default.min.js`
+        //     }
+        // },
 
         // 폴더 및 파일을 삭제합니다.
         clean : {
@@ -213,12 +226,19 @@ module.exports = (grunt)=>{
             },
             js : {
                 files : [`${origin}/js/**/*.js`],
-                tasks : [`newer:jshint`,`concat`,`uglify`]
+                tasks : [`newer:jshint`,`webpack`,`uglify`] //concat -> webpack
             },
             img : {
                 files : [`${origin}/images/**/*.{gif,jpeg,jpg,png}`],
                 tasks : [`newer:image`]
-            }
+            },
+            app: {
+				files: ["js/**/*", "web_modules/**/*"],
+				tasks: ["webpack:build-dev"],
+				options: {
+					spawn: false,
+				}
+			}
             
             //fonts : {
             //    files : [`${origin}/fonts/**/*`],
@@ -309,8 +329,9 @@ module.exports = (grunt)=>{
     // javascript task
     grunt.registerTask(`jsnt`, [
             `jshint`,
-            `concat`,
-            `uglify`
+            //`concat`,
+            `webpack`
+            //`uglify`
         ]
     );
 

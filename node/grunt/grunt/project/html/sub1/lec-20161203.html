@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/html/index.html">목록</a>
+    <h1>2_라이브러리. 맵 위크맵</h1>
+</div>
+<script>
+    'use strict'
+
+    let map = new Map();
+    let o = {n:1};
+
+    map.set(o, "A");
+    map.set("2",9);
+
+    debug(map.has("2"));
+    debug(map.get(o));
+    console.log(...map);
+
+    map.delete("2");
+    map.clear();
+    debug(map);
+
+    let map_1 = new Map([[1,2],[4,5]]);
+    debug(map_1.size);
+
+
+    debug("위크맵");
+    let weakmap = new WeakMap();
+    debug(weakmap);
+
+
+    let oasis = {n:1};
+    weakmap.set(oasis,"A");
+
+    let spider = {m:1};
+    weakmap.set(spider,"B");
+
+
+    debug(weakmap.get(oasis));
+    debug(weakmap.get(spider));
+    debug(weakmap);
+    //debug(...weakmap);
+
+    weakmap.delete(spider);
+    //weakmap.clear();
+
+    let weakmap_1 = new WeakMap([[{},2],[{},5]]);
+    debug(weakmap_1.size);
+
+
+
+</script>
+</body>
+</html>

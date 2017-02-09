@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/html/index.html">목록</a>
+    <h1>4_비동기 프로그래밍 Promise</h1>
+</div>
+<script>
+    'use strict'
+
+    /*
+    var promise = new Promise(function(resolve, reject){
+        var request = new XMLHttpRequest();
+        var url = "/es6/data.json";
+
+        request.open("GET",url);
+
+        request.addEventListener("load", function(){
+            if(request.status === 200){
+                console.log("request.responseText : ", request.responseText);
+                resolve(request.responseText);
+            } else {
+                console.log("request.status : ", request.status);
+                reject("서버 에러 : " + request.status);
+            }
+        },false);
+
+        request.addEventListener("error", function(){
+            reject("AJAX 요청 실패");
+        },false);
+
+        request.send();
+
+    });
+
+    promise.then(function(value){
+        value = JSON.parse(value);
+        console.log(value);
+        return value;
+    }, function(reason){
+        console.log(reason);
+    })
+    */
+
+    //Promise 선언
+    var promise1 = new Promise(function (resolve, reject) {
+
+        // 비동기를 표현하기 위해 setTimeout 함수를 사용 
+        window.setTimeout(function () {
+
+            // 해결됨 
+            console.log("첫번째 Promise 완료");
+            resolve("11111");
+
+        }, Math.random() * 2000 + 1000);
+    });
+
+    var promise2 = new Promise(function (resolve, reject) {
+
+        // 비동기를 표현하기 위해 setTimeout 함수를 사용 
+        window.setTimeout(function () {
+
+            // 해결됨 
+            console.log("두번째 Promise 완료");
+            resolve("222222");
+
+        }, Math.random() * 1000 + 1000);
+    });
+
+    Promise.all([promise1, promise2]).then(function (values) {
+        console.log("모두 완료됨", values);
+    });
+
+</script>
+</body>
+</html>

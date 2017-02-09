@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/html/index.html">목록</a>
+    <h1>2_라이브러리. 숫자</h1>
+</div>
+<script>
+    'use strict'
+    let apart = 0b00001111;
+    let black = 15;
+
+    console.log( apart === black );
+    console.log( apart );
+
+    let crazy = 0o17;
+    let draft = 15;
+
+    console.log( crazy === draft );
+    console.log( crazy );
+
+    let epic = 17.0;
+    let fire = 1.2;
+
+    console.log( Number.isInteger(epic) );
+    console.log( Number.isInteger(fire) );
+
+
+    let epsilonEqual = (a,b) => {
+        return Math.abs(a-b) < Number.EPSILON;
+    };
+
+    console.log(epsilonEqual(0.1+0.2, 0.3))
+    console.log(epsilonEqual(0.9-0.8, 0.1))
+
+
+</script>
+</body>
+</html>

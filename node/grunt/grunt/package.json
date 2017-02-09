@@ -22,15 +22,16 @@
     "grunt-contrib-watch": "*",
     "grunt-csscomb": "*",
     "grunt-htmlhint": "*",
+    "grunt-image": "*",
     "grunt-includes": "*",
     "grunt-newer": "*",
     "grunt-postcss": "*",
+    "grunt-react": "*",
     "grunt-sass": "*",
+    "grunt-webpack": "*",
     "jit-grunt": "*",
     "jshint-stylish": "*",
-    "time-grunt": "*",
-    "grunt-image": "*",
-    "grunt-webpack": "*",
-    "grunt-react": "*"
-  }
+    "time-grunt": "*"
+  },
+  "dependencies": {}
 }
