@@ -86,7 +86,7 @@ module.exports = (grunt)=>{
                 // noAdvanced: true
                 compatibility : `ie9`,
                 keepSpecialComments : `*`,
-                sourceMap : false, //true,
+                sourceMap : false,//true,
                 advanced : false
             },
             dist: {
@@ -156,9 +156,14 @@ module.exports = (grunt)=>{
                                 cacheDirectory: true,
                                 presets: ['es2015']
                             }
+                        },
+                        {
+                            test : /\.html$/,
+                            loader : 'handlebars-loader'
                         }
                     ]
-                }
+                },
+                devtool: '#inline-source-map'
                 
             //     plugins: [
             //         new webpack.optimize.UglifyJsPlugin({
@@ -256,21 +261,13 @@ module.exports = (grunt)=>{
                 tasks : [`newer:sass`,`postcss`,`csscomb`,`cssmin`]
             },
             js : {
-                files : [`${origin}/js/**/*.js`],
-                tasks : [`newer:jshint`,`webpack`] //concat -> webpack,`uglify`
+                files : [`${origin}/js/**/*.{js,jsx}`],
+                tasks : [`newer:jshint`,`webpack`] //concat,`uglify` -> webpack
             },
             img : {
                 files : [`${origin}/images/**/*.{gif,jpeg,jpg,png}`],
                 tasks : [`newer:image`]
-            },
-            app: {
-				files: ["js/**/*", "web_modules/**/*"],
-				tasks: ["webpack:build-dev"],
-				options: {
-					spawn: false,
-				}
-			}
-            
+            }
             //fonts : {
             //    files : [`${origin}/fonts/**/*`],
             //    tasks : [`newer:copy`]

@@ -1,2 +1,2 @@
-let $ = require("jquery");
+let $ = require("./jquery");
 $(".wrap").addClass("test");

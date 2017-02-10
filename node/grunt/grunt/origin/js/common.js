@@ -1,3 +1,7 @@
+let stat = "abcde";
+var temp = require('../html/index.html');
+temp({stat});
+
 define(["./default.js"],(defaultsTest)=>{
     let $ = defaultsTest.$;
     $(".wrap").addClass("common");

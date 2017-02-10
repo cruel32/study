@@ -1,4 +1,4 @@
-let $ = require("jquery");
+let $ = require("./jquery");
 module.exports = {
     test(){
         console.log($);
