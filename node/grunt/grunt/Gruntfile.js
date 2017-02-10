@@ -140,12 +140,21 @@ module.exports = (grunt)=>{
                 module : {
                     loaders : [
                         {
-                            test: /\.js$/,
+                            test: /\.jsx$/,
                             loader: 'babel-loader',
                             exclude: /node_modules/,
                             query: {
                                 cacheDirectory: true,
                                 presets: ['es2015', 'react']
+                            }
+                        },
+                        {
+                            test: /\.js$/,
+                            loader: 'babel-loader',
+                            exclude: /node_modules/,
+                            query: {
+                                cacheDirectory: true,
+                                presets: ['es2015']
                             }
                         }
                     ]
