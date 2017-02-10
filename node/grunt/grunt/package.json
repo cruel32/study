@@ -10,6 +10,11 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "*",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
     "grunt": "*",
     "grunt-concurrent": "*",
     "grunt-contrib-clean": "*",

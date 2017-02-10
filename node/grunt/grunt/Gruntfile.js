@@ -2,10 +2,11 @@ module.exports = (grunt)=>{
     `use strict`;
     let origin = "origin";
     let project = "project";
-
+    let webpack = require('webpack');
+    
     require(`time-grunt`)(grunt);
     require(`jit-grunt`)(grunt);
-
+    
     // 가) 프로젝트 환경설정.
     grunt.initConfig({
         pkg : grunt.file.readJSON(`package.json`),
@@ -125,7 +126,7 @@ module.exports = (grunt)=>{
         //     }
         // },
 
-        webpack: {
+        webpack : {
 			dist: {
                 entry: { // 엔트리 파일 목록
                     common : `./${origin}/js/common.js`,
@@ -135,18 +136,39 @@ module.exports = (grunt)=>{
                     path: `./${project}/js`, // 번들 파일 폴더
                     filename: '[name].bundle.js', // 번들 파일 이름 규칙
                     publicPath: `./${project}/`
+                },
+                module : {
+                    loaders : [
+                        {
+                            test: /\.js$/,
+                            loader: 'babel-loader',
+                            exclude: /node_modules/,
+                            query: {
+                                cacheDirectory: true,
+                                presets: ['es2015', 'react']
+                            }
+                        }
+                    ]
                 }
+                
+            //     plugins: [
+            //         new webpack.optimize.UglifyJsPlugin({
+            //             warnings : false
+            //         })
+            //    ]
             }
 		},
-        // 압축합니다.
+        //압축합니다.
         // uglify : {
         //     options : {
         //         banner : `/*! <%= pkg.name %> - v<%= pkg.version %> - ` +
         //         `<%= grunt.template.today("yyyy-mm-dd") %> */`
         //     },
         //     dist : {
-        //         src : `${project}/js/default.min.js`,
-        //         dest : `${project}/js/default.min.js`
+        //         files : {
+        //             src : `${project}/js/**.js`,
+        //             dest : `${project}/js/**.js`
+        //         }
         //     }
         // },
 
@@ -226,7 +248,7 @@ module.exports = (grunt)=>{
             },
             js : {
                 files : [`${origin}/js/**/*.js`],
-                tasks : [`newer:jshint`,`webpack`,`uglify`] //concat -> webpack
+                tasks : [`newer:jshint`,`webpack`] //concat -> webpack,`uglify`
             },
             img : {
                 files : [`${origin}/images/**/*.{gif,jpeg,jpg,png}`],
@@ -331,7 +353,7 @@ module.exports = (grunt)=>{
             `jshint`,
             //`concat`,
             `webpack`
-            //`uglify`
+            //,`uglify`
         ]
     );
 
