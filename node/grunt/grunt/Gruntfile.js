@@ -156,11 +156,12 @@ module.exports = (grunt)=>{
                                 cacheDirectory: true,
                                 presets: ['es2015']
                             }
-                        },
-                        {
-                            test : /\.html$/,
-                            loader : 'handlebars-loader'
                         }
+                        // ,
+                        // {
+                        //     test : /\.html$/,
+                        //     loader : 'handlebars-loader'
+                        // }
                     ]
                 },
                 devtool: '#inline-source-map'

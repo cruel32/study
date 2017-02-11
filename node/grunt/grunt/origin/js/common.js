@@ -1,6 +1,6 @@
-let stat = "abcde";
-var temp = require('../html/index.html');
-temp({stat});
+// let stat = "abcde";
+// var temp = require('../html/index.html');
+// temp({stat});
 
 define(["./default.js"],(defaultsTest)=>{
     let $ = defaultsTest.$;
@@ -9,4 +9,3 @@ define(["./default.js"],(defaultsTest)=>{
     let [a,b,c] = arr; 
     return exports
 });
-
