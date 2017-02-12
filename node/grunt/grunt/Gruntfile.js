@@ -134,27 +134,17 @@ module.exports = (grunt)=>{
                 },
                 output: {
                     path: `./${project}/js`, // 번들 파일 폴더
-                    filename: '[name].bundle.js', // 번들 파일 이름 규칙
-                    publicPath: `./${project}/`
+                    filename: '[name].bundle.js' // 번들 파일 이름 규칙
                 },
                 module : {
                     loaders : [
                         {
-                            test: /\.jsx$/,
+                            test: /\.jsx?$/,
                             loader: 'babel-loader',
                             exclude: /node_modules/,
                             query: {
                                 cacheDirectory: true,
                                 presets: ['es2015', 'react']
-                            }
-                        },
-                        {
-                            test: /\.js$/,
-                            loader: 'babel-loader',
-                            exclude: /node_modules/,
-                            query: {
-                                cacheDirectory: true,
-                                presets: ['es2015']
                             }
                         }
                         // ,
@@ -241,7 +231,7 @@ module.exports = (grunt)=>{
             files: {
                 expand: true,
                 cwd:  `${origin}/images/`,
-                src: ['**/*.{png,jpg,gif,svg}'],
+                src: ['**/*.{png,jpeg,jpg,gif,svg}'],
                 dest: `${project}/images/`
             }
         },
@@ -266,7 +256,7 @@ module.exports = (grunt)=>{
                 tasks : [`newer:jshint`,`webpack`] //concat,`uglify` -> webpack
             },
             img : {
-                files : [`${origin}/images/**/*.{gif,jpeg,jpg,png}`],
+                files : [`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`],
                 tasks : [`newer:image`]
             }
             //fonts : {
