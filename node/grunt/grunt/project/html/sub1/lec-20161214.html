@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/html/index.html">목록</a>
+    <h1>7_클래스 답사</h1>
+</div>
+<script>
+    'use strict'
+    class School {
+        constructor(name){
+        this._name_ = name;
+        }
+        get name(){
+            return this._name_
+        }
+        set name(name){
+            this._name_ = name;
+        }
+    }
+
+    let object1 = {
+        name : "수지",
+        __proto__ : {age : "25"}
+    };
+
+    let object2 = {
+        name : "민호"
+    };
+
+    Object.setPrototypeOf(object2,{age:29})
+
+    let object3 = Object.create({name:"승희"},{name:{value:"수지"}});
+
+    let object4 = function(name){
+        this.name = name;
+    };
+    object4.prototype.age = 33;
+
+    console.log("object1 : ", object1);
+    console.log("object2 : ", object2);
+    console.log("object3 : ", object3);
+    console.log("object4 : ", object4);
+
+    let s1 = "문자열";
+    let s2 = new String("문자열");
+
+    console.log("s1 : ", s1);
+    console.log("s2 : ", s2);
+
+    console.log(typeof s1);
+    console.log(typeof s2);
+
+    console.log(s1 == s2);
+    console.log(s1.length);
+
+
+    function A(a){
+        this.a = a;
+    }
+    A.prototype.printA = function(){
+        console.log(this.a);
+    }
+
+    /*
+    class A {
+    construcotr(a){
+        this.a = a;
+    }
+    printA(){
+        console.log(this.a);
+    }
+    }
+    */
+
+    class B extends A {
+        constructor(a,b){
+            super(a);
+            this.b = b;
+        }
+        printB(){
+            console.log(this.b);
+        }
+        static sayHello(){
+            console.log("안녕하세요");
+        }
+    }
+
+    class C extends B {
+        constructor(a,b,c){
+            super(a,b);
+            this.c = c;
+        }
+        printC(){
+            console.log(this.c);
+        }
+        printAll(){
+            this.printC();
+            super.printB();
+            super.printA();
+        }
+    }
+
+    let obj  = new C(1,2,3);
+    obj.printAll();
+    C.sayHello();
+
+    class test {
+        constructor(){
+            return {re:"Gg",start:"gqwe"};
+        }
+    }
+
+    let t = new test();
+    console.log(t);
+
+    class myCustomArray1 extends Array {
+        static get [Symbol.species](){
+            return Array;
+        }
+    }
+
+    class myCustomArray2 extends Array {
+
+    }
+
+    let arr1 = new myCustomArray1(0,1,2,3,4);
+    let arr2 = new myCustomArray2(0,1,2,3,4);
+
+    console.log( arr1 instanceof myCustomArray1 );
+    console.log( arr2 instanceof myCustomArray2 );
+
+    arr1 = arr1.map(function(value){
+        return value + 1;
+    });
+
+    arr2 = arr2.map(function(value){
+        return value +1;
+    })
+
+    console.log( arr1 instanceof myCustomArray1 );
+    console.log( arr2 instanceof myCustomArray2 );
+
+    console.log( arr1 instanceof Array );
+    console.log( arr2 instanceof Array );
+
+    let school = new School("gg");
+    school.name = "gbc";
+    console.log( school._name_ );
+</script>
+</body>
+</html>

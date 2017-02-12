@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6 study</title>
+</head>
+<body>
+<div class="wrap">
+    <a href="/html/index.html">목록</a>
+    <h1>2_라이브러리. Object</h1>
+</div>
+<script>
+    'use strict'
+
+    let art = {
+        a : 12,
+        __proto__ : {
+            b : 13
+        }
+    };
+    debug(art);
+    debug(art.a);
+    debug(art.b);
+
+
+    let xman = {x : 12};
+    let yman = {y : 13};
+
+    Object.setPrototypeOf(yman,xman);
+
+    debug(xman);
+    debug(yman);
+    debug(yman.x);
+    debug(yman.y);
+
+
+    let x = {x:12};
+    let y = {y:13, __proto__: x};
+    let z = {z:14, get b(){return 2;}, q:{}};
+
+    console.log( Object.defineProperty(z, "z", {enumerable:false}) );
+
+    let m = {y:11};
+
+    Object.assign(m,y,z);
+
+
+    console.log("x : ", x);
+    console.log("y : ", y);
+    console.log("z : ", z);
+    console.log("m : ", m);
+
+    console.log("m.y : ", m.y);
+    console.log("m.z : ", m.z);
+    console.log("m.b : ", m.b);
+    console.log("m.x : ", m.x);
+    console.log("m.q == z.q : ", m.q == z.q);
+
+
+
+
+</script>
+</body>
+</html>
