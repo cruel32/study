@@ -96,15 +96,14 @@ gulp.task('connect', function() {
     connect.server({
         root: `${project}`,
         port: 52273,
-        livereload: true,
-        host : `localhost`
+        livereload: true
     });
 });
 
 gulp.task('watch', ()=>{
-    gulp.watch(`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`,['images']);
-    gulp.watch(`${origin}/app/**/*.{js,jsx}`,['js']);
-    gulp.watch(`${origin}/**/*.html`,['html']);
+    gulp.watch(`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`,['images'])
+    gulp.watch(`${origin}/app/**/*.{js,jsx}`,['js'])
+    gulp.watch(`${origin}/**/*.html`,['html'])
     gulp.watch(`${origin}/sass/**/*.{scss,sass}`,['css']);
 });
 
