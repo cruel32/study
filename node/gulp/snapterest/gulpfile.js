@@ -1,17 +1,19 @@
-let gulp = require('gulp');
-let clean = require('gulp-clean');
-let newer = require('gulp-newer');
-let imagemin = require('gulp-imagemin');
-let htmlhint = require("gulp-htmlhint");
-let sass = require('gulp-sass');
-let autoprefixer = require('gulp-autoprefixer');
-let csscomb = require('gulp-csscomb');
-let cssmin = require('gulp-cssmin');
-let jshint = require('gulp-jshint');
-let webpack = require('gulp-webpack');
-let connect = require('gulp-connect');
-let origin = "source";
-let project = "build";
+const gulp = require('gulp'),
+    clean = require('gulp-clean'),
+    newer = require('gulp-newer'),
+    imagemin = require('gulp-imagemin'),
+    fileinclude = require('gulp-file-include'),
+    htmlhint = require("gulp-htmlhint"),
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    csscomb = require('gulp-csscomb'),
+    cssmin = require('gulp-cssmin'),
+    jshint = require('gulp-jshint'),
+    webpack = require('gulp-webpack'),
+    connect = require('gulp-connect'),
+
+    origin = "source",
+    project = "build";
 
 require('gulp-stats')(gulp);
 
@@ -31,6 +33,13 @@ gulp.task('images',()=>{
 gulp.task('html',()=>{
     gulp.src(`${origin}/html/**/*.html`)
     .pipe(newer(`${origin}/html/**/*.html`))
+    .pipe(fileinclude({
+        prefix: '@@',
+        basepath: `${origin}/include`,
+        context: {
+            name: 'example'
+        }
+    }))
     .pipe(htmlhint('hint/.htmlhintrc'))
     .pipe(gulp.dest(`${project}/html`))
     .pipe(connect.reload());
@@ -44,13 +53,6 @@ gulp.task('css',()=>{
     .pipe(csscomb())
     .pipe(cssmin())
     .pipe(gulp.dest(`${project}/css`))
-    .pipe(connect.reload());
-});
-
-gulp.task('js:gulp',()=>{
-    return gulp.src(`gulpfile.js`)
-    .pipe(jshint())
-    .pipe(gulp.dest(`./`))
     .pipe(connect.reload());
 });
 
@@ -74,12 +76,12 @@ gulp.task('js',()=>{
                     exclude: /node_modules/,
                     query: {
                         cacheDirectory: true,
-                        presets: ['es2015']
+                        presets: ['es2015','react']
                     }
                 }
             ]
         },
-        devtool: '#inline-source-map',
+        devtool: '#inline-source-map'
         // plugins: [
         //     new webpack.optimize.UglifyJsPlugin({
         //         warnings : false
@@ -100,10 +102,9 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', ()=>{
-    gulp.watch(`gulpfile.js`,['js:gulp']);
     gulp.watch(`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`,['images']);
     gulp.watch(`${origin}/app/**/*.{js,jsx}`,['js']);
-    gulp.watch(`${origin}/html/**/*.html`,['html']);
+    gulp.watch(`${origin}/**/*.html`,['html']);
     gulp.watch(`${origin}/sass/**/*.{scss,sass}`,['css']);
 });
 

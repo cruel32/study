@@ -1,3 +1,5 @@
+import test from './components/com';
+console.log(test);
 let React = require("react");
 let ReactDom = require("react-dom");
 
