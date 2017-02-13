@@ -62,7 +62,7 @@ gulp.task('js',()=>{
     .pipe(jshint())
     .pipe(webpack({
         entry : { // 엔트리 파일 목록
-            snapterest : `./${origin}/app/app.js`
+            snapterest : [`./${origin}/app/app.js`]
         },
         output : {
             path: `${__dirname}/${project}/app`, // 번들 파일 폴더
