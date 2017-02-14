@@ -44,7 +44,7 @@ let ReactDom = require("react-dom");
 // let listOfItems = React.DOM.ul({className : 'list-of-items'}, reactFragment);
 // ReactDom.render(listOfItems, document.getElementById('react-application'));
 
-//6
+//6.
 // let ReactDomServer = require('react-dom/server');
 // let reactElement = React.createElement('h1',{className:'header'}, 'This is react');
 // // ReactDomServer.renderToString(reactElement,document.getElementById('react-application'));
@@ -58,21 +58,23 @@ let ReactDom = require("react-dom");
 </ul>;
 ReactDom.render(listOfItems, document.getElementById('react-application'));*/
 
+//7.
 let ReactClass = React.createClass({
     getInitialState : function(){
         return {
-            isHeaderHidden : false,
-            title : 'State React Component'
+            isHeaderHidden : false
         }
     },
     handleClick : function(){
+        console.log("this : ", this);
         this.setState({
             isHeaderHidden : !this.state.isHeaderHidden
         });
     },
     render : function(){
-        let headerElement = React.createElement('h1',{className:'header',key:'header'},this.state.title);
-        let buttonElement = React.createElement('button',{className:'btn btn-default', onClick : this.handleClick, key : 'button'}, 'Toggle header');
+        let title = "Stateful React Component";
+        let headerElement = React.createElement('h1',{className :'header', key:'header'},title);
+        let buttonElement = React.createElement('button',{className :'btn btn-default', onClick : this.handleClick, key : 'button'}, 'Toggle header');
         
         if(this.state.isHeaderHidden){
             return React.createElement('div',null,[buttonElement]);
@@ -82,3 +84,4 @@ let ReactClass = React.createClass({
 })
 let reactComponentElement = React.createElement(ReactClass);
 let reactComponent = ReactDom.render(reactComponentElement, document.getElementById('react-application'));
+
