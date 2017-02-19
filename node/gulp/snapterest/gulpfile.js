@@ -18,7 +18,7 @@ const gulp = require('gulp'),
 require('gulp-stats')(gulp);
 
 gulp.task('clean',()=>{
-    return gulp.src(`${project}/**/*.*`,{read: false})
+    return gulp.src(`${project}`,{read: false})
     .pipe(clean());
 });
 
