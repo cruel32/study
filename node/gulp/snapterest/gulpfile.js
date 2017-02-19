@@ -46,8 +46,8 @@ gulp.task('html',()=>{
 });
 
 gulp.task('css',()=>{
-    return gulp.src(`${origin}/sass/**/*.{scss,sass}`)
-    .pipe(newer(`${origin}/sass/**/*.{scss,sass}`))
+    return gulp.src(`${origin}/sass/**/*.{scss,sass.css}`)
+    .pipe(newer(`${origin}/sass/**/*.{scss,sass,css}`))
     .pipe(sass())
     .pipe(autoprefixer())
     .pipe(csscomb())
@@ -104,9 +104,9 @@ gulp.task('watch', ()=>{
     gulp.watch(`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`,['images'])
     gulp.watch(`${origin}/app/**/*.{js,jsx}`,['js'])
     gulp.watch(`${origin}/**/*.html`,['html'])
-    gulp.watch(`${origin}/sass/**/*.{scss,sass}`,['css']);
+    gulp.watch(`${origin}/sass/**/*.{scss,sass.css}`,['css']);
 });
 
-gulp.task('default',['clean','html','css','js','images']);
+gulp.task('default',['html','css','js','images']);
 gulp.task('serve',['connect','watch']);
 
