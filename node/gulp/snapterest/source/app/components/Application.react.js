@@ -27,7 +27,7 @@ let Application = React.createClass({
             collectionTweets: {}
         });
     },
-    render: function () {
+    render() {
         return (
             <div className="container-fluid">
                 <div className="row">
