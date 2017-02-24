@@ -29,6 +29,9 @@ let Stream = React.createClass({
                 onAddTweetToCollection={this.props.onAddTweetToCollection} />
             );
         }
+        return (
+            <header text="Waiting for publick photos from twiiter..." />
+        )
     }
 })
 
