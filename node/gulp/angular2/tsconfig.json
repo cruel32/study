@@ -1,0 +1,35 @@
+// {
+//   "compilerOptions": {
+//     "baseUrl": "",
+//     "declaration": false,
+//     "emitDecoratorMetadata": true,
+//     "experimentalDecorators": true,
+//     "lib": ["es6", "dom"],
+//     "mapRoot": "./",
+//     "module": "es6",
+//     "moduleResolution": "node",
+//     "outDir": "../dist/out-tsc",
+//     "sourceMap": true,
+//     "target": "es5",
+//     "typeRoots": [
+//       "../node_modules/@types"
+//     ]
+//   }
+// }
+{
+  "compilerOptions": {
+    "outDir": "bulid/app",
+    "target": "ES5",
+    "module": "system",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "removeComments": false,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

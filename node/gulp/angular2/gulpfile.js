@@ -8,17 +8,19 @@ const gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     csscomb = require('gulp-csscomb'),
     cssmin = require('gulp-cssmin'),
-    jshint = require('gulp-jshint'),
     webpack = require('gulp-webpack'),
     connect = require('gulp-connect'),
-
+    del = require('del'),
+    sourcemaps = require('gulp-sourcemaps'),
+    typescript = require('gulp-typescript'),
+    tscConfig = require('./tsconfig.json'),
     origin = "source",
     project = "build";
 
 require('gulp-stats')(gulp);
 
 gulp.task('clean',()=>{
-    return gulp.src(`${project}`,{read: false})
+    return gulp.src(`${project}`,{read: true})
     .pipe(clean());
 });
 
@@ -56,41 +58,48 @@ gulp.task('css',()=>{
     .pipe(connect.reload());
 });
 
-// gulp.task('js',()=>{
-//     return gulp.src(`./${origin}/app/**/*.{js,jsx}`)
-//     .pipe(newer(`./${origin}/app/**/*.{js,jsx}`))
-//     .pipe(jshint())
-//     .pipe(webpack({
-//         entry : { // 엔트리 파일 목록
-//             snapterest : [`./${origin}/app/app.js`],
-//         },
-//         output : {
-//             path: `${__dirname}/${project}/app`,
-//             filename: '[name].js'
-//         },
-//         module : {
-//             loaders : [
-//                 {
-//                     test: /\.jsx?$/,
-//                     loader: 'babel-loader',
-//                     exclude: /node_modules/,
-//                     query: {
-//                         cacheDirectory: true,
-//                         presets: ['es2015','react']
-//                     }
-//                 }
-//             ]
-//         },
-//         devtool: '#inline-source-map'
-//         plugins: [
-//             new webpack.optimize.UglifyJsPlugin({
-//                 warnings : false
-//             })
-//         ]
-//     }))
-//     .pipe(gulp.dest(`${project}/app`))
-//     .pipe(connect.reload());
-// });
+// TypeScript compile
+gulp.task('compile', function () {
+  return gulp.src('./${origin}/app/**/*.ts')
+    .pipe(sourcemaps.init())
+    .pipe(typescript(tscConfig.compilerOptions))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(`${project}/app`))
+});
+
+gulp.task('js',()=>{
+    return gulp.src(`./${origin}/js/**/*.{js}`)
+    .pipe(webpack({
+        entry : {
+            index : [`./${origin}/js/index.js`]
+        },
+        output : {
+            path: `${__dirname}/${project}/js`, // 번들 파일 폴더
+            filename: '[name].js' // 번들 파일 이름 규칙
+        },
+        module : {
+            loaders : [
+                {
+                    test: /\.jsx?$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/,
+                    query: {
+                        cacheDirectory: true,
+                        presets: ['es2015']
+                    }
+                }
+            ]
+        },
+        devtool: '#inline-source-map'
+        // plugins: [
+        //     new webpack.optimize.UglifyJsPlugin({
+        //         warnings : false
+        //     })
+        // ]
+    }))
+    .pipe(gulp.dest(`${project}/js`))
+    .pipe(connect.reload());
+});
 
 gulp.task('connect', function() {
     connect.server({
@@ -102,11 +111,11 @@ gulp.task('connect', function() {
 
 gulp.task('watch', ()=>{
     gulp.watch(`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`,['images'])
-    // gulp.watch(`${origin}/app/**/*.{js,jsx}`,['js'])
+    gulp.watch(`${origin}/js/**/*.{js}`,['js'])
     gulp.watch(`${origin}/**/*.html`,['html'])
     gulp.watch(`${origin}/sass/**/*.{scss,sass.css}`,['css']);
 });
 
-gulp.task('default',['html','css','images'/*,'js'*/]);
+gulp.task('default',['html','css','images','js']);
 gulp.task('serve',['connect','watch']);
 
