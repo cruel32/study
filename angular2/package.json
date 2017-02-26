@@ -1,0 +1,44 @@
+{
+  "name": "angular2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && concurrrently \" tsc -w\" \"lite-server\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
+  },
+  "author": "cruel32",
+  "license": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/angular/angular.io/blob/mater/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "@angular/common": "^2.4.8",
+    "@angular/compiler": "^2.4.8",
+    "@angular/core": "^2.4.8",
+    "@angular/forms": "^2.4.8",
+    "@angular/http": "^2.4.8",
+    "@angular/platform-browser": "^2.4.8",
+    "@angular/platform-browser-dynamic": "^2.4.8",
+    "@angular/router": "^3.4.8",
+    "@angular/upgrade": "^2.4.8",
+    "angular-in-memory-web-api": "^0.2.4",
+    "bootstrap": "^3.3.7",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.2.0",
+    "systemjs": "^0.20.9",
+    "zone.js": "^0.7.7"
+  },
+  "devDependencies": {
+    "concurrently": "^3.3.0",
+    "lite-server": "^2.2.2",
+    "typings": "^2.1.0"
+  }
+}
