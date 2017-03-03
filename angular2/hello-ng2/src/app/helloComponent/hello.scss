@@ -1,0 +1,8 @@
+.wrap {
+    .line {
+        border:1px solid red;
+        &.blue {
+            border:1px solid blue;
+        }
+    }
+}
