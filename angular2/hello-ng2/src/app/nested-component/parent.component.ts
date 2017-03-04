@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'nested-parent',
   template: `
-    <div>
+    <div class="parent">
       부모
       <nested-child></nested-child>
     </div>
   `,
-  styles: [`div {border:2px solid blue; padding:10px; }`]
+  styleUrls: ["parent.css"]
 })
 export class NestedParentComponent {
 
