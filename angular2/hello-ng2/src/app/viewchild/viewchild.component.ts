@@ -12,7 +12,7 @@ export class Item {
 })
 
 export class ItemComponent {
-  display(){
+  displayAction(){
     alert("ItemComponent 입니다");
   }
 }
@@ -24,18 +24,19 @@ export class ItemComponent {
 
 export class ViewChildComponent {
   @ViewChild(Item)
-  set item(v:Item){
+  set item(v:Item){.0
     setTimeout(()=>{this.status = v.status},0);
   }
-  @ViewChild(ItemComponent) itemComponent : ItemComponent;
+  @ViewChild(ItemComponent) ItemComponentCons : ItemComponent;
   isShow:boolean = true;
   status:boolean;
   toggle(){
     this.isShow = !this.isShow;
   }
   display(){
-    this.itemComponent.display();
+    this.ItemComponentCons.displayAction();
   }
+
 }
 
 

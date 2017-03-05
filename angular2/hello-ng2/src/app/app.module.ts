@@ -11,6 +11,8 @@ import { NestedGrandsonComponent } from './nested-component/grandson.component';
 import { ParentToChildInputComponent } from './parent-to-child-input/parent-to-child-input.component';
 import { ChildInputComponent } from './parent-to-child-input/child-input.component';
 import { ItemComponent, Item, ViewChildComponent } from './viewchild/viewchild.component';
+import { ViewchildrenComponent, ChildCmp } from './viewchildren/viewchildren.component';
+import { ContentChildComp, ButtonGroup, GroupTitle, childButtonCmp} from './contentchild/contentchild.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ItemComponent, Item, ViewChildComponent } from './viewchild/viewchild.c
     ParentToChildInputComponent,
     ChildInputComponent,
     ViewChildComponent, Item, ItemComponent,
+    ViewchildrenComponent, ChildCmp,
+    ContentChildComp, GroupTitle, childButtonCmp, ButtonGroup
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,6 @@ import { ItemComponent, Item, ViewChildComponent } from './viewchild/viewchild.c
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent,HelloComponent,NestedParentComponent,ParentToChildInputComponent,ViewChildComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
