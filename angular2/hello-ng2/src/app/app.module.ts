@@ -13,6 +13,7 @@ import { ChildInputComponent } from './parent-to-child-input/child-input.compone
 import { ItemComponent, Item, ViewChildComponent } from './viewchild/viewchild.component';
 import { ViewchildrenComponent, ChildCmp } from './viewchildren/viewchildren.component';
 import { ContentChildComp, ButtonGroup, GroupTitle, childButtonCmp} from './contentchild/contentchild.component';
+import { ContentChildrenComp, Word, WordGroup } from './contentchildren/contentchildren.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContentChildComp, ButtonGroup, GroupTitle, childButtonCmp} from './cont
     ChildInputComponent,
     ViewChildComponent, Item, ItemComponent,
     ViewchildrenComponent, ChildCmp,
-    ContentChildComp, GroupTitle, childButtonCmp, ButtonGroup
+    ContentChildComp, GroupTitle, childButtonCmp, ButtonGroup,
+    ContentChildrenComp, Word, WordGroup
   ],
   imports: [
     BrowserModule,
