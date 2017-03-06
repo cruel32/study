@@ -14,6 +14,9 @@ import { ItemComponent, Item, ViewChildComponent } from './viewchild/viewchild.c
 import { ViewchildrenComponent, ChildCmp } from './viewchildren/viewchildren.component';
 import { ContentChildComp, ButtonGroup, GroupTitle, childButtonCmp} from './contentchild/contentchild.component';
 import { ContentChildrenComp, Word, WordGroup } from './contentchildren/contentchildren.component';
+import { ComponentStyleComponent } from './component-style/component-style.component';
+import { FirstDepthComponent } from './component-style/first-depth.component';
+import { SecondDepthComponent } from './component-style/second-depth.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { ContentChildrenComp, Word, WordGroup } from './contentchildren/contentc
     ViewChildComponent, Item, ItemComponent,
     ViewchildrenComponent, ChildCmp,
     ContentChildComp, GroupTitle, childButtonCmp, ButtonGroup,
-    ContentChildrenComp, Word, WordGroup
+    ContentChildrenComp, Word, WordGroup,
+    ComponentStyleComponent, FirstDepthComponent, SecondDepthComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChildren, QueryList } from '@angular/core';
+import { Component, Input, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 
 @Component({
   selector : 'child-cmp',
@@ -20,11 +20,11 @@ export class ChildCmp {
   templateUrl : "./viewchildren.component.html"
 })
 
-export class ViewchildrenComponent {
+export class ViewchildrenComponent implements AfterViewInit {
   @ViewChildren('child1,child2,child3') children:QueryList<ChildCmp>;
-
+  
   ngAfterViewInit() {
-    this.children.toArray().forEach((child)=>child.printName());
+    this.children.toArray().forEach((child)=>child.printName())
   }
 }
 

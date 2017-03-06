@@ -7,6 +7,7 @@ export class Word {
 
 @Component({
   selector : "word-group",
+  styleUrls: ['contentchildren.component.scss'],
   template : `{{words}}`
 })
 
