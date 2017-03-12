@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ParentService } from './parent.service';
+import { ParentService } from '../oop-service/parent.service';
 
 export interface Child {
   getData();

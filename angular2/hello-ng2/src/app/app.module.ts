@@ -17,6 +17,9 @@ import { ContentChildrenComp, Word, WordGroup } from './contentchildren/contentc
 import { ComponentStyleComponent } from './component-style/component-style.component';
 import { FirstDepthComponent } from './component-style/first-depth.component';
 import { SecondDepthComponent } from './component-style/second-depth.component';
+import { MockComponent } from './mock/mock.component';
+import { PromiseComponent } from './promise/promise.component';
+import { ListComponent } from './promise/mock.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { SecondDepthComponent } from './component-style/second-depth.component';
     ViewchildrenComponent, ChildCmp,
     ContentChildComp, GroupTitle, childButtonCmp, ButtonGroup,
     ContentChildrenComp, Word, WordGroup,
-    ComponentStyleComponent, FirstDepthComponent, SecondDepthComponent
+    ComponentStyleComponent, FirstDepthComponent, SecondDepthComponent,
+    MockComponent,
+    ListComponent, PromiseComponent
   ],
   imports: [
     BrowserModule,

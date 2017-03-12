@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataServiceService } from '../data-service.service'
+import { DataServiceService } from '../data-service/data-service.service'
 
 @Component({
   selector: 'hello',
