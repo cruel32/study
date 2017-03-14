@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <name>이순신</name>
+        <age>20</age>
+        <height unit="cm">180</height>
+        <picture file="leesooshin.jpg"></picture>
+        <!-- CDATA section 추가 -->
+        <![CDATA[
+            <name>이순신</name>
+            <picture file="leesoonsin"></picture>
+        ]]>
+    </student>
+    <student>
+        <name>강감찬</name>
+        <age>25</age>
+        <height unit="cm">175</height>
+    </student>
+</students>
