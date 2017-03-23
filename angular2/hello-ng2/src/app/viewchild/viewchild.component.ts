@@ -24,7 +24,7 @@ export class ItemComponent {
 
 export class ViewChildComponent {
   @ViewChild(Item)
-  set item(v:Item){.0
+  set item(v:Item){
     setTimeout(()=>{this.status = v.status},0);
   }
   @ViewChild(ItemComponent) ItemComponentCons : ItemComponent;
