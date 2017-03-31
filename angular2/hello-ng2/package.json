@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "start http://localhost:4200 & ng serve -port 4200",
     "test": "ng test",
     "lite": "lite-server",
     "tsc": "tsc",

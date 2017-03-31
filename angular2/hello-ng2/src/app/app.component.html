@@ -1,12 +1,18 @@
 <h1>
   {{title}}
 </h1>
-<hello>왜죠</hello>
-<nested-parent>waiting...</nested-parent>
-<parent-to-child-input></parent-to-child-input>
-<br/>
-<app-view-child></app-view-child>
-<br/>
+<ul>
+  <li><a routerLink="">index</a></li>
+  <li><a routerLink="parent-to-child-input">parent-to-child-input</a></li>
+  <li><a routerLink="component-style">component-style</a></li>
+  <li><a routerLink="nested-component">nested-component</a></li>
+  <li><a routerLink="viewchild">viewchild</a></li>
+  <li><a routerLink="hello">hello</a></li>
+  <li><a routerLink="viewchildren">viewchildren</a></li>
+  <li><a routerLink="contentchild">contentchild</a></li>
+  <li><a routerLink="contentchildren">contentchildren</a></li>
+</ul>
+<router-outlet></router-outlet>
 <some-cmp></some-cmp>
 <br/>
 <app-contentchild></app-contentchild>

@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { appRoutingProviders, routing } from './app.routing';
+
+import { IntroComponent } from './intro.component';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './helloComponent/hello.component';
 import { NestedParentComponent } from './nested-component/parent.component';
@@ -24,6 +27,7 @@ import { ListComponent } from './promise/mock.component';
 @NgModule({
   declarations: [
     AppComponent,
+    IntroComponent,
     HelloComponent,
     NestedParentComponent,
     NestedChildComponent,
@@ -41,9 +45,10 @@ import { ListComponent } from './promise/mock.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
-  providers: [],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
