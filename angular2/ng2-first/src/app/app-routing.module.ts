@@ -8,7 +8,8 @@ import { CoreTestComponent } from './core-test/core-test.component';
 const appRoutes:Routes=[
   {path:'', component:IntroComponent},
   {path:'hello', component:HelloComponent},
-  {path:'core-test', component:CoreTestComponent}
+  {path:'core-test', component:CoreTestComponent},
+  {path:'lazy', loadChildren:'app/player/player.module#PlayerModule'}
 ]
 
 @NgModule({

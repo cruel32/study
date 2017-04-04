@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { UserService } from './user.service';
+import { UserService } from '../core/user.service';
 
 @Component({
   selector: 'app-title',
   template: `
-  <h1 highlight *ngIf="title">{{title}}</h1>
+  <h1 highlight>{{title}}</h1>
   by <b>{{user}}</b>`
 })
 export class TitleComponent {
