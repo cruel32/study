@@ -28,7 +28,8 @@ import { CoreTestComponent } from './core-test/core-test.component';
   imports: [
     BrowserModule,
     FormsModule,
-    MemberModule, PlayerModule,   
+    MemberModule,
+    PlayerModule,   
     AppRoutingModule,
     CoreModule.forRoot({nickName:'Happy'}),
     MemberModule
