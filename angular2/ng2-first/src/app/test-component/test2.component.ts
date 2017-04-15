@@ -1,18 +1,17 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    'selector' : "test",
+    'selector' : "test2-component",
     'template' : `
-        <div class="test">{{testObj.key}} : {{testObj.value}}</div>
-        <test2-component [inpTest2]="{key:' bottom',value:' 30px'}"></test2-component>
+        <div class="test2" tester>{{testObj.key}} : {{testObj.value | testPipe:{pipeKey:"pipe"} }}</div>
     `,
     'styles' : [`
-        .test {color:blue; font-size:24px;}
+        .test2 {color:blue; font-size:24px;}
     `]
 })
-export class TestComponent {
+export class Test2Component {
     @Output() val = new EventEmitter();
-    @Input('inpTest') set inpObj (val:any){
+    @Input('inpTest2') set inpObj (val:any){
         this.testObj.key += val.key;
         this.testObj.value += val.value;
     };
