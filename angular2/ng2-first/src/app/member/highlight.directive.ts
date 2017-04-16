@@ -1,9 +1,9 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: '[highlight]'
+  selector: '[highlight2]'
 })
-export class HighlightDirective {
+export class Highlight2Directive {
 
   private el: HTMLElement;
   constructor(el: ElementRef) {

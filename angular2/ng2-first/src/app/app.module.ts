@@ -19,27 +19,24 @@ import { HelloComponent } from './hello/hello.component';
 import { CoreTestComponent } from './core-test/core-test.component';
 
 /* test */
-import { TestDirecive } from './test-directive/test.directive';
 import { TestModule } from './test-module/test.module';
-import { TestPipe } from './test-pipe/test.pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    // IntroComponent,
-    // HelloComponent,
-    // CoreTestComponent
-    TestDirecive,
-    TestPipe
+    IntroComponent,
+    HelloComponent,
+    CoreTestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    TestModule
-    // PlayerModule,   
-    // AppRoutingModule,
-    // CoreModule.forRoot({nickName:'Happy'}),
-    // MemberModule
+    // TestModule
+    PlayerModule,   
+    AppRoutingModule,
+    CoreModule.forRoot({nickName:'Happy'}),
+    MemberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
