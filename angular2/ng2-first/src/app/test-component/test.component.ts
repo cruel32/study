@@ -4,7 +4,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     'selector' : "test",
     'template' : `
         <div class="test">{{testObj.key}} : {{testObj.value}}</div>
-        <test2-component [inpTest2]="{key:' bottom',value:' 30px'}"></test2-component>
     `,
     'styles' : [`
         .test {color:blue; font-size:24px;}

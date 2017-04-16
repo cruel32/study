@@ -23,12 +23,14 @@ import { TestModule } from './test-module/test.module';
 import { Test2Module } from './test-module/test2.module';
 import { Test3Module } from './test-module/test3.module';
 import { TestComponent } from './test-component/test.component';
+import { Test2Component } from './test-component/test2.component';
 
 import { TestRoutingModule, testRoutingProviders} from './app.routing.test.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    Test2Component
     // IntroComponent,
     // HelloComponent,
     // CoreTestComponent
