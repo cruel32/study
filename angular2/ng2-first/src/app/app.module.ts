@@ -21,24 +21,28 @@ import { CoreTestComponent } from './core-test/core-test.component';
 /* test */
 import { TestModule } from './test-module/test.module';
 
+import { Test2Component } from './test-component/test2.component';
+import { TestRoutingModule, testRoutingProviders } from './app.routing.test.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IntroComponent,
-    HelloComponent,
-    CoreTestComponent
+    Test2Component
+    // IntroComponent,
+    // HelloComponent,
+    // CoreTestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    // TestModule
-    PlayerModule,   
-    AppRoutingModule,
-    CoreModule.forRoot({nickName:'Happy'}),
-    MemberModule
+    TestModule,
+    TestRoutingModule
+    // PlayerModule,   
+    // AppRoutingModule,
+    // CoreModule.forRoot({nickName:'Happy'}),
+    // MemberModule
   ],
-  providers: [],
+  providers: [testRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
