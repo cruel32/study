@@ -9,7 +9,7 @@ const appRoutes:Routes=[
   {path:'', component:IntroComponent},
   {path:'hello', component:HelloComponent},
   {path:'core-test', component:CoreTestComponent},
-  {path:'lazy', loadChildren:'app/player/player.module#PlayerModule'}
+  {path:'lazy', loadChildren:'./player/player.module#PlayerModule'}
 ]
 
 @NgModule({

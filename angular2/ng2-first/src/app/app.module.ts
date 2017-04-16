@@ -24,10 +24,11 @@ import { Test2Module } from './test-module/test2.module';
 import { Test3Module } from './test-module/test3.module';
 import { TestComponent } from './test-component/test.component';
 
+import { TestRoutingModule, testRoutingProviders} from './app.routing.test.module';
+
 @NgModule({
   declarations: [
-    AppComponent, TestComponent
-
+    AppComponent,
     // IntroComponent,
     // HelloComponent,
     // CoreTestComponent
@@ -37,13 +38,14 @@ import { TestComponent } from './test-component/test.component';
     FormsModule,
     TestModule,
     Test2Module,
-    Test3Module
+    Test3Module,
+    TestRoutingModule
     // PlayerModule,   
     // AppRoutingModule,
     // CoreModule.forRoot({nickName:'Happy'}),
     // MemberModule
   ],
-  providers: [],
+  providers: [testRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

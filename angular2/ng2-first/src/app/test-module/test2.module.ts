@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Test2Component } from '../test-component/test2.component';
+import { TestDirecive } from '../test-directive/test.directive';
+import { TestPipe } from '../test-pipe/test.pipe';
 
 @NgModule({
     imports : [],
-    exports : [Test2Component],
+    exports : [
+        TestDirecive,
+        TestPipe
+    ],
+    providers : [],
     declarations : [
-        Test2Component
+        TestDirecive,
+        TestPipe
     ]
 })
 export class Test2Module {}
