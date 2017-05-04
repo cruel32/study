@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>slider3d</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- 제이쿼리 불러오기 -->
+<script src="/js/jquery.slider3d.js"></script><!-- slider3d js파일 불러오기-->
+<link rel="stylesheet" type="text/css" href="/css/jquery.slider3d.css" /><!-- slider3d css파일 불러오기-->
+<script>
+$(function(){
+    var slider3d = $("#slider3d").slider3d();
+    $(".btn-left").on("click",function(){
+
+    })
+    $(".btn-right").on("click",function(){
+
+    })
+})
+</script>
+<style>
+    * {padding:0;margin:0;list-style-type: none;font-size:16px;line-height: 100%;border:0;}
+    .top {border-bottom:1px solid #ccc; padding:20px;}
+    .container {position:relative; box-sizing:border-box; width:400px; min-height:800px; margin:0 auto; padding:50px; background: lightblue;}
+    .img-origin {width:100%; text-align: center; background: lightcyan;}
+    #slider3d {background: lightcyan;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+    <div class="top">
+        <h1>slider3d 입니다</h1>
+    </div>
+    <div class="container">
+        <div class="img-origin" >
+            <img src="/images/img_1.png" alt="" height="250">
+        </div>
+        <div>
+            <span>외부에서 플러그인 내부 메서드 콜하기</span>
+            <button class="btn-left">왼쪽</button>
+            <button class="btn-right">오른쪽</button>
+        </div>
+        <div id="slider3d" >
+            <ul>
+                <li><img src="/images/img_1.png" alt="" height="250"></li>
+                <li><img src="/images/img_2.png" alt="" height="250"></li>
+                <li><img src="/images/img_3.png" alt="" height="250"></li>
+                <li><img src="/images/img_4.png" alt="" height="250"></li>
+                <li><img src="/images/img_5.png" alt="" height="250"></li>
+                <li><img src="/images/img_6.png" alt="" height="250"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        문의사항은 eternalsage@naver.com 로 주세요
+    </div>
+</div>
+
+
+
+</body>
+</html>
