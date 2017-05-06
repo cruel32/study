@@ -11,10 +11,10 @@
 $(function(){
     var slider3d = $("#slider3d").slider3d();
     $(".btn-left").on("click",function(){
-
+        slider3d[0].left();
     })
     $(".btn-right").on("click",function(){
-
+        slider3d[0].right();
     })
 })
 </script>
@@ -24,6 +24,7 @@ $(function(){
     .container {position:relative; box-sizing:border-box; width:400px; min-height:800px; margin:0 auto; padding:50px; background: lightblue;}
     .img-origin {width:100%; text-align: center; background: lightcyan;}
     #slider3d {background: lightcyan;}
+    /*#slider3d img {width:100%;}*/
 </style>
 </head>
 <body>
