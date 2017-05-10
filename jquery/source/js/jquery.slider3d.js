@@ -41,7 +41,7 @@
                     console.log("this.idx : ", this.idx, "i : ", i);
                     this.items.each((idx,ele)=>{
                         $(ele).css({
-                            "transition" : "transform 1.5s ease",
+                            "transition" : "all .4s ease",
                             "transform" : `rotateY(${idx*Slider3d.deg}deg)`
                             +(
                                 state == "end" ? (idx==Math.abs(i) ? transZ : ``) : transZ
@@ -55,31 +55,34 @@
                     // })
                 },
                 to(num){
-                    console.log("to");
                     this.slider.css({
                         "transform" : `rotateY(${num*this.deg*-1}deg)`
-                    }).one(this.animateEvent,()=>{
+                    }).one(this.animateEvent,(e)=>{
+                        e.stopPropagation();
                         Slider3d.idx = num;
                         Slider3d.pack();
                     })
                 },
                 move(num){
-                    console.log("move");
                     this.unpack(num);
                 },
                 unpack(num){
-                    Slider3d.setAngle("start");
                     el.css({
                         "perspective" : `${o.minPerspective}px`
                     }).one(this.animateEvent,(e)=>{
+                        console.log("unpack end");
+                        Slider3d.setAngle("start");
+                        e.stopPropagation();
                         Slider3d.to(num);
                     })
                 },
                 pack(){
                     Slider3d.setAngle("end");
-                    el.css({
-                        "perspective" : `${o.maxPerspective}px`
-                    })
+                    setTimeout(()=>{
+                        el.css({
+                            "perspective" : `${o.maxPerspective}px`
+                        });
+                    },400)
                 },
                 right(){
                     console.log("right");
