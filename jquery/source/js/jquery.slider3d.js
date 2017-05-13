@@ -1,6 +1,5 @@
 (function($){
     $.fn.slider3d = function(options){
-        console.log("this : ", this);
         let o = $.extend({
             "class" : "slider3d",
             "index" : 0,
@@ -35,24 +34,17 @@
                     this.items.eq(this.idx).addClass("active");
                 },
                 setAngle(state){
-                    console.log("setAngle");
                     let i = this.idx%this.items.length;
                     let transZ = ` translateZ(${Slider3d.distance}px)`;
-                    console.log("this.idx : ", this.idx, "i : ", i);
                     this.items.each((idx,ele)=>{
                         $(ele).css({
                             "transition" : "all .4s ease",
                             "transform" : `rotateY(${idx*Slider3d.deg}deg)`
                             +(
-                                state == "end" ? (idx==Math.abs(i) ? transZ : ``) : transZ
+                                state == "end" ? (idx==(Slider3d.items.length+i)%this.items.length ? transZ : ``) : transZ
                             )
                         });
                     })
-                    // this.items.each((idx,ele)=>{
-                    //     $(ele).css({
-                    //         "transform" : `rotateY(${idx*Slider3d.deg}deg) translateZ(${Slider3d.distance}px)`
-                    //     });
-                    // })
                 },
                 to(num){
                     this.slider.css({
@@ -70,7 +62,6 @@
                     el.css({
                         "perspective" : `${o.minPerspective}px`
                     }).one(this.animateEvent,(e)=>{
-                        console.log("unpack end");
                         Slider3d.setAngle("start");
                         e.stopPropagation();
                         Slider3d.to(num);
@@ -85,15 +76,12 @@
                     },400)
                 },
                 right(){
-                    console.log("right");
                     this.move(this.idx+=1);
                 },
                 left(){
-                    console.log("left");
                     this.move(this.idx-=1);
                 }
             }
-            console.log("el : ", el);
             Slider3d.define();
             $.extend(this,Slider3d);
         })

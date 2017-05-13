@@ -5,8 +5,8 @@
 <title>slider3d</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- 제이쿼리 불러오기 -->
-<script src="/js/jquery.slider3d.js"></script><!-- slider3d js파일 불러오기-->
-<link rel="stylesheet" type="text/css" href="/css/jquery.slider3d.css" /><!-- slider3d css파일 불러오기-->
+<script src="/jqPlugin/js/jquery.slider3d.js"></script><!-- slider3d js파일 불러오기-->
+<link rel="stylesheet" type="text/css" href="/jqPlugin/css/jquery.slider3d.css" /><!-- slider3d css파일 불러오기-->
 <script>
 $(function(){
     var slider3d = $("#slider3d").slider3d();
@@ -34,23 +34,20 @@ $(function(){
         <h1>slider3d 입니다</h1>
     </div>
     <div class="container">
-        <div class="img-origin" >
-            <img src="/images/img_1.png" alt="" height="250">
-        </div>
-        <div>
-            <span>외부에서 플러그인 내부 메서드 콜하기</span>
-            <button class="btn-left">왼쪽</button>
-            <button class="btn-right">오른쪽</button>
-        </div>
         <div id="slider3d" >
             <ul>
-                <li><img src="/images/img_1.png" alt="" height="250"></li>
-                <li><img src="/images/img_2.png" alt="" height="250"></li>
-                <li><img src="/images/img_3.png" alt="" height="250"></li>
-                <li><img src="/images/img_4.png" alt="" height="250"></li>
-                <li><img src="/images/img_5.png" alt="" height="250"></li>
-                <li><img src="/images/img_6.png" alt="" height="250"></li>
+                <li><img src="/jqPlugin/images/img_1.png" alt="" height="250"></li>
+                <li><img src="/jqPlugin/images/img_2.png" alt="" height="250"></li>
+                <li><img src="/jqPlugin/images/img_3.png" alt="" height="250"></li>
+                <li><img src="/jqPlugin/images/img_4.png" alt="" height="250"></li>
+                <li><img src="/jqPlugin/images/img_5.png" alt="" height="250"></li>
+                <li><img src="/jqPlugin/images/img_6.png" alt="" height="250"></li>
             </ul>
+        </div>
+        <div>
+            <p>외부에서 플러그인 내부 메서드 콜하기</p>
+            <button class="btn-left">왼쪽</button>
+            <button class="btn-right">오른쪽</button>
         </div>
     </div>
     <div class="footer">

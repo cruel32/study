@@ -1,29 +1,28 @@
 .slider3d {
-    width:100%;
-    box-sizing:border-box;
-    perspective: 300000px;
-    transform-origin: 50% 50%;
-    transition:all .4s ease;
-    > * {
-        width:100%;
-        position:relative;
-        transition:all .4s ease;
-        transform-style: preserve-3d;
-        > * {
-            width:100%;
-            position:absolute;
-            text-align:center;
-            top:0;
-            left:0;
-            transition:all .4s ease;
-            // opacity:0;
-            &.show {
-                opacity:1;
-            }
-            &.active{
-                opacity:1;
-                position:relative;
-            }
-        }
+  width: 100%;
+  box-sizing: border-box;
+  perspective: 300000px;
+  transform-origin: 50% 50%;
+  transition: all .4s ease;
+  >* {
+    width: 100%;
+    position: relative;
+    transition: all .4s ease;
+    transform-style: preserve-3d;
+    >* {
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      left: 0;
+      transition: all .4s ease; // opacity:0;
+      &.show {
+        opacity: 1;
+      }
+      &.active {
+        opacity: 1;
+        position: relative;
+      }
     }
+  }
 }

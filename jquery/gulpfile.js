@@ -13,6 +13,7 @@ const gulp = require('gulp'),
     minify = require('gulp-minify'),
     origin = "source",
     project = "build";
+    prefix = "/jqPlugin";
 
 require('gulp-stats')(gulp);
 
@@ -30,19 +31,19 @@ gulp.task('js',()=>{
     }))
     .pipe(minify({
         ext:{
-            src:'-debug.js',
+            // src:'-debug.js',
             min:'.js'
         },
         ignoreFiles: ['-min.js']
     }))
-    .pipe(gulp.dest(`${project}/js`))
+    .pipe(gulp.dest(`${project}${prefix}/js`))
     .pipe(connect.reload());
 });
 
 gulp.task('images',()=>{
     return gulp.src(`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`)
     .pipe(newer(`${project}/images/**/*.{gif,jpeg,jpg,png,svg}`))
-    .pipe(gulp.dest(`${project}/images`))
+    .pipe(gulp.dest(`${project}${prefix}/images`))
     .pipe(connect.reload());
 });
 
@@ -57,7 +58,7 @@ gulp.task('html',()=>{
         }
     }))
     .pipe(htmlhint('hint/.htmlhintrc'))
-    .pipe(gulp.dest(`${project}/html`))
+    .pipe(gulp.dest(`${project}${prefix}/html`))
     .pipe(connect.reload());
 });
 
@@ -68,7 +69,7 @@ gulp.task('css',()=>{
     .pipe(autoprefixer())
     .pipe(csscomb())
     .pipe(cssmin())
-    .pipe(gulp.dest(`${project}/css`))
+    .pipe(gulp.dest(`${project}${prefix}/css`))
     .pipe(connect.reload());
 });
 
