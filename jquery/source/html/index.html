@@ -5,8 +5,12 @@
 <title>slider3d</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- 제이쿼리 불러오기 -->
+<script src="https://use.fontawesome.com/1dd1847042.js"></script>
 <script src="/jqPlugin/js/jquery.slider3d.js"></script><!-- slider3d js파일 불러오기-->
 <link rel="stylesheet" type="text/css" href="/jqPlugin/css/jquery.slider3d.css" /><!-- slider3d css파일 불러오기-->
+<link rel="stylesheet" type="text/css" href="/jqPlugin/css/sprites.css" /><!-- slider3d css파일 불러오기-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script>
 $(function(){
     var slider3d = $("#slider3d").slider3d();
@@ -24,6 +28,7 @@ $(function(){
     .container {position:relative; box-sizing:border-box; width:400px; min-height:800px; margin:0 auto; padding:50px; background: lightblue;}
     .img-origin {width:100%; text-align: center; background: lightcyan;}
     #slider3d {background: lightcyan;}
+    .icon {display:inline-block;}
     /*#slider3d img {width:100%;}*/
 </style>
 </head>
@@ -52,6 +57,8 @@ $(function(){
     </div>
     <div class="footer">
         문의사항은 eternalsage@naver.com 로 주세요
+        <i class="icon spr-arm"></i>
+        <i class="fa fa-camera-retro"></i>
     </div>
 </div>
 

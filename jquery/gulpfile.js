@@ -11,6 +11,8 @@ const gulp = require('gulp'),
     babel = require('gulp-babel'),
     connect = require('gulp-connect'),
     minify = require('gulp-minify'),
+    spritesmith = require('gulp.spritesmith'),
+    merge = require('merge-stream'),
     origin = "source",
     project = "build";
     prefix = "/jqPlugin";
@@ -45,6 +47,30 @@ gulp.task('images',()=>{
     .pipe(newer(`${project}/images/**/*.{gif,jpeg,jpg,png,svg}`))
     .pipe(gulp.dest(`${project}${prefix}/images`))
     .pipe(connect.reload());
+});
+
+gulp.task('sprites', function () {
+    let spriteData = gulp.src(`${origin}/sprites/*.png`).pipe(spritesmith({
+        imgName: 'sprites.png',
+        imgPath: `${prefix}/images/sprites.png`,
+        cssName: 'sprites.css',
+        cssOpts: {
+            cssSelector(sprite) {
+                return '.spr-' + sprite.name;
+            }
+        },
+        padding:10
+    }));
+
+    let imgStream = spriteData.img
+    .pipe(gulp.dest(`${project}${prefix}/images`));
+
+    let cssStream = spriteData.css
+    .pipe(csscomb())
+    .pipe(cssmin())
+    .pipe(gulp.dest(`${project}${prefix}/css`));
+
+    return merge(imgStream, cssStream);
 });
 
 gulp.task('html',()=>{
@@ -84,11 +110,12 @@ gulp.task('connect', function() {
 
 gulp.task('watch', ()=>{
     gulp.watch(`${origin}/images/**/*.{gif,jpeg,jpg,png,svg}`,['images'])
+    gulp.watch(`${origin}/sprites/**/*.png`,['sprites'])
     gulp.watch(`${origin}/js/**/*.js`,['js'])
     gulp.watch(`${origin}/html/**/*.html`,['html'])
     gulp.watch(`${origin}/sass/**/*.{scss,sass.css}`,['css']);
 });
 
-gulp.task('default',['html','css','js','images']);
+gulp.task('default',['html','css','js','images','sprites']);
 gulp.task('serve',['connect','watch']);
 
