@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp clean && gulp && start http://localhost:5000/jqPlugin/html/index.html && gulp serve"
+    "start": "gulp && start http://localhost:5000/jqPlugin/html/index.html && gulp serve"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "gulp-csscomb": "^3.0.8",
     "gulp-cssmin": "^0.1.7",
     "gulp-file-include": "^1.0.0",
+    "gulp-group-css-media-queries": "^1.2.0",
     "gulp-htmlhint": "^0.3.1",
     "gulp-iconfont": "^8.0.1",
     "gulp-iconfont-css": "^2.1.0",
@@ -28,7 +29,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-stats": "0.0.4",
     "gulp-watch": "^4.3.11",
-    "gulp.spritesmith": "^6.5.0",
+    "gulp.spritesmith-multi": "^3.1.0",
     "jshint": "^2.9.4",
     "merge-stream": "^1.0.1"
   }

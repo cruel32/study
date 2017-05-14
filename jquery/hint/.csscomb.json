@@ -5,9 +5,7 @@
     "block-indent": "\t",
     "color-shorthand": true,
     "element-case": "lower",
-    "eof-newline": false,
     "leading-zero": false,
-    "quotes": "double",
     "sort-order-fallback": "abc",
     "space-before-colon": "",
     "space-after-colon": "",
@@ -16,10 +14,11 @@
     "space-between-declarations": " ",
     "space-before-opening-brace": " ",
     "space-after-opening-brace": "",
-    "space-after-selector-delimiter": "\n",
+    "space-after-selector-delimiter": " ",
     "space-before-selector-delimiter": "",
     "space-before-closing-brace": "",
     "strip-spaces": true,
-    "tab-size": true,
-    "unitless-zero": true
+    "tab-size": 2,
+    "unitless-zero": true,
+    "eof-newline": true
 }
