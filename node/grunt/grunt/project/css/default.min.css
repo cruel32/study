@@ -1,1 +1,10 @@
-.wrap{background:#ccc}.wrap:before{position:absolute;z-index:1;display:block;table-layout:fixed;content:"";background:#333;border:none;opacity:1}.wrap .li{border-bottom:1px solid #ccc}.wrap .li a{color:#333}.wrap .lnk{position:absolute;right:5px;display:block;color:#555}
+/* default */
+.wrap {background:#ccc;}
+
+.wrap:before {background:#333; opacity:1; border:none; table-layout:fixed; z-index:1; position:absolute; display:block; content:"";}
+
+.wrap .li {border-bottom:1px solid #ccc;}
+
+.wrap .li a {color:#333;}
+
+.wrap .lnk {display:block; position:absolute; right:5px; color:#555;}
