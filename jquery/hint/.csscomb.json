@@ -17,8 +17,8 @@
     "space-after-selector-delimiter": " ",
     "space-before-selector-delimiter": "",
     "space-before-closing-brace": "",
-    "strip-spaces": true,
     "tab-size": 2,
     "unitless-zero": true,
-    "eof-newline": true
+    "eof-newline": true,
+    "strip-spaces": true
 }

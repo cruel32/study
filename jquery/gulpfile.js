@@ -123,9 +123,9 @@ gulp.task('css', () => {
         .pipe(sass())
         .pipe(autoprefixer())
         .pipe(gcmq())
-        // .pipe(csscomb({
-        //     configPath: 'hint/.csscomb.json'
-        // }))
+        .pipe(csscomb({
+            configPath: 'hint/.csscomb.json'
+        }))
         // .pipe(cssmin())
         .pipe(gulp.dest(`${project}${prefix}/css`))
         .pipe(connect.reload());
