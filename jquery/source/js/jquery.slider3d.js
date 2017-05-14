@@ -25,7 +25,8 @@
                     //radians = degrees * (π / 180)
                     this.distance = (this.width/2) * Math.tan(((180-(this.deg/2+90)) * Math.PI / 180 ));
                     el.css({
-                        "transform" : `translateZ(-${this.distance}px)`
+                        "transform" : `translateZ(-${this.distance}px)`,
+                        "perspective" : `${o.minPerspective}px`
                     })
                     this.setActive();
                     this.setAngle("end");
@@ -39,10 +40,10 @@
                     this.items.each((idx,ele)=>{
                         $(ele).css({
                             "transition" : "all .4s ease",
-                            "transform" : `rotateY(${idx*Slider3d.deg}deg)`
-                            +(
-                                state == "end" ? (idx==(Slider3d.items.length+i)%this.items.length ? transZ : ``) : transZ
-                            )
+                            "transform" : `rotateY(${idx*Slider3d.deg}deg) ${transZ}`
+                            // +(
+                            //     state == "end" ? (idx==(Slider3d.items.length+i)%this.items.length ? transZ : ``) : transZ
+                            // )
                         });
                     })
                 },
@@ -59,21 +60,21 @@
                     this.unpack(num);
                 },
                 unpack(num){
-                    el.css({
-                        "perspective" : `${o.minPerspective}px`
-                    }).one(this.animateEvent,(e)=>{
+                    // el.css({
+                    //     "perspective" : `${o.minPerspective}px`
+                    // }).one(this.animateEvent,(e)=>{
                         Slider3d.setAngle("start");
-                        e.stopPropagation();
+                        // e.stopPropagation();
                         Slider3d.to(num);
-                    })
+                    // })
                 },
                 pack(){
                     Slider3d.setAngle("end");
-                    setTimeout(()=>{
-                        el.css({
-                            "perspective" : `${o.maxPerspective}px`
-                        });
-                    },400)
+                    // setTimeout(()=>{
+                    //     el.css({
+                    //         "perspective" : `${o.maxPerspective}px`
+                    //     });
+                    // },400)
                 },
                 right(){
                     this.move(this.idx+=1);
