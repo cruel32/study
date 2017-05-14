@@ -126,6 +126,16 @@ gulp.task('css', () => {
         .pipe(csscomb({
             configPath: 'hint/.csscomb.json'
         }))
+        /*
+            *** csscomb 커스터마이징 ***
+            node_modules/csscomb/lib/options/strip-spaces.js 파일에서 9 lines 수정
+
+            수정전:
+            return string.replace(/[ \t]+\n/g, '\n');
+            
+            수정후:
+            return string.replace(/[ \t]+\n/g, '\n').replace(/\n\n/g, '\n');
+        */
         // .pipe(cssmin())
         .pipe(gulp.dest(`${project}${prefix}/css`))
         .pipe(connect.reload());
