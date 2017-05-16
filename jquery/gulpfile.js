@@ -16,6 +16,7 @@ const gulp = require('gulp'),
     merge = require('merge-stream'),
     iconfont = require('gulp-iconfont'),
     iconfontCss = require('gulp-iconfont-css'),
+    inject = require('gulp-inject'),
     origin = "source",
     project = "build";
 prefix = "/jqPlugin";
@@ -103,7 +104,7 @@ gulp.task('iconfont', function() {
 
 
 gulp.task('html', () => {
-    gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`])
+    return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`])
         .pipe(newer(`${origin}/**/*.html`))
         .pipe(fileinclude({
             prefix: '@@',
@@ -141,6 +142,20 @@ gulp.task('css', () => {
         .pipe(connect.reload());
 });
 
+gulp.task('inject', ()=>{
+    return gulp.src(`${origin}/files.json`)
+    .pipe(inject(gulp.src([
+        `./html/**/*.html`
+    ], {read: false}), {
+        starttag: '"{{ext}}": [',
+        endtag: ']',
+            transform(filepath, file, i, length) {
+                return '  "' + filepath + '"' + (i + 1 < length ? ',' : '');
+            }
+        }
+    ))
+    .pipe(gulp.dest(`${project}${prefix}`))
+})
 
 gulp.task('connect', function() {
     connect.server({
@@ -159,5 +174,5 @@ gulp.task('watch', () => {
     gulp.watch(`${origin}/sass/**/*.{scss,sass.css}`, ['css']);
 });
 
-gulp.task('default', ['html', 'css', 'js', 'images', 'sprite', 'iconfont']);
+gulp.task('default', ['html', 'css', 'js', 'images', 'sprite', 'iconfont', 'inject']);
 gulp.task('serve', ['connect', 'watch']);
