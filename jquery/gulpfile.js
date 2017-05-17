@@ -1,5 +1,5 @@
 const gulp = require('gulp'),
-    clean = require('gulp-clean'),
+    sourcemaps = require('gulp-sourcemaps'),
     newer = require('gulp-newer'),
     fileinclude = require('gulp-file-include'),
     htmlhint = require("gulp-htmlhint"),
@@ -17,6 +17,9 @@ const gulp = require('gulp'),
     iconfont = require('gulp-iconfont'),
     iconfontCss = require('gulp-iconfont-css'),
     inject = require('gulp-inject'),
+
+    sitemap = require('gulp-sitemap-generator'),
+
     origin = "source",
     project = "build";
 prefix = "/jqPlugin";
@@ -102,9 +105,18 @@ gulp.task('iconfont', function() {
         .pipe(gulp.dest(`${project}${prefix}/fonts`));
 });
 
+gulp.task('idx', () => {
+    return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`, `!${origin}/map.html`])
+        .pipe(sitemap({
+            'path':`${origin}/map.html`,
+            'targetPath' : `${project}${prefix}/map.html`,
+            'href' : `${project}${prefix}` //필수 옵션
+        }))
+        // .pipe(gulp.dest(`${project}${prefix}`))
+});
 
 gulp.task('html', () => {
-    return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`])
+    return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`,`!${origin}/map.html`])
         .pipe(newer(`${origin}/**/*.html`))
         .pipe(fileinclude({
             prefix: '@@',
@@ -121,7 +133,8 @@ gulp.task('html', () => {
 gulp.task('css', () => {
     return gulp.src([`${origin}/sass/**/*.{scss,sass,css}`,`!${origin}/sass/mixin/*.{scss,sass}`])
         .pipe(newer(`${origin}/sass/**/*.{scss,sass,css}`))
-        .pipe(sass())
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(gcmq())
         .pipe(csscomb({
@@ -137,7 +150,8 @@ gulp.task('css', () => {
             수정후:
             return string.replace(/[ \t]+\n/g, '\n').replace(/\n\n/g, '\n');
         */
-        // .pipe(cssmin())
+        .pipe(sourcemaps.write())
+        .pipe(cssmin())
         .pipe(gulp.dest(`${project}${prefix}/css`))
         .pipe(connect.reload());
 });
