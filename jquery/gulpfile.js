@@ -108,9 +108,9 @@ gulp.task('iconfont', function() {
 gulp.task('idx', () => {
     return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`])
         .pipe(sitemap({
-            'path':`${origin}/map.html`,
-            'targetPath' : `${project}${prefix}/map.html`,
-            'href' : `${project}${prefix}` //필수 옵션
+            'name':`map.html`,
+            'root' : `${origin}`,
+            'href' : `${prefix}`
         }))
         .pipe(gulp.dest(`${project}${prefix}`))
 });
@@ -124,6 +124,12 @@ gulp.task('html', () => {
             context: {
                 name: 'example'
             }
+        }))
+        .pipe(sitemap({
+            'name':`map.html`,
+            'root':`${origin}`,
+            'href':`${prefix}`,
+            'untitle':' - '
         }))
         .pipe(htmlhint('hint/.htmlhintrc'))
         .pipe(gulp.dest(`${project}${prefix}`))
