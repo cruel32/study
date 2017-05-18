@@ -7,14 +7,16 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- 제이쿼리 불러오기 -->
 </head>
 <body>
-
-<style>
+<%- sitemaps %>
+<ul>
 <% _.each(sitemaps, function(sitemap) { %>
-.next<%= sitemap.filepath %>:before {
-	content: "\<%= sitemap.relative %>";
-}
+<li><a href="<%= sitemap.filepath %>"><%= sitemap.relative %></a></li>
 <% }); %>
-</style>
+
+</ul>
+
+
+
 
 </body>
 </html>

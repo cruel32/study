@@ -106,13 +106,13 @@ gulp.task('iconfont', function() {
 });
 
 gulp.task('idx', () => {
-    return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`, `!${origin}/map.html`])
+    return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`])
         .pipe(sitemap({
             'path':`${origin}/map.html`,
             'targetPath' : `${project}${prefix}/map.html`,
             'href' : `${project}${prefix}` //필수 옵션
         }))
-        // .pipe(gulp.dest(`${project}${prefix}`))
+        .pipe(gulp.dest(`${project}${prefix}`))
 });
 
 gulp.task('html', () => {
