@@ -105,6 +105,18 @@ gulp.task('iconfont', function() {
         .pipe(gulp.dest(`${project}${prefix}/fonts`));
 });
 
+gulp.task('idx', () => {
+    return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`])
+        .pipe(sitemap({
+            'name':`map.html`,
+            'dest':`${origin}`,
+            'dir':`${prefix}`,
+            'untitle':' - '
+        }))
+        .pipe(htmlhint('hint/.htmlhintrc'))
+        .pipe(gulp.dest(`${project}${prefix}`))
+});
+
 gulp.task('html', () => {
     return gulp.src([`${origin}/**/*.html`, `!${origin}/include/*.html`,`!${origin}/map.html`])
         .pipe(newer(`${origin}/**/*.html`))
