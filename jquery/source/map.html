@@ -3,17 +3,42 @@
 <head>
 <meta charset="utf-8">
 <title>INDEX</title>
+<meta name="description" content="공백은 공백으로 나옴">
+<meta name='author' content="cruel32">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script><!-- 제이쿼리 불러오기 -->
+<link rel="stylesheet" type="text/css" href="/jqPlugin/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/jqPlugin/css/map.css" />
 </head>
 <body>
-<ul>
-<% _.each(sitemaps, function(sitemap) { %>
-<li>
-    <a href="<%= sitemap.href %>"><%= sitemap.name %></a>
-    <span><%= sitemap.title %></span>
-</li>
-<% }); %>
-</ul>
+
+<div class="wrap">
+    <h1 class="title">gulp-sitemap-generator</h1>
+    <% _.each(maps, function(map,idx) { %>
+    <h2 class="title"><%= folderNames[idx] %> 목록</h1>
+    <table class="table">
+        <thead>
+            <tr class="tr">
+                <th class="th"><span class="txt">타이틀</span></th>
+                <th class="th"><span class="txt">파일경로</span></th>
+                <th class="th"><span class="txt">파일명</span></th>
+                <th class="th"><span class="txt">작업자</span></th>
+                <th class="th"><span class="txt">설명</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% _.each(map, function(m) { %>
+            <tr class="tr">
+                <td class="td"><span class="txt"><%= m.title %></span></td>
+                <td class="td"><span class="txt left"><%= m.href %></span></td>
+                <td class="td"><a href="<%= m.href %>" class="txt" target="_blank"><%= m.name %></a></td>
+                <td class="td"><span class="txt"><%= m.author %></span></td>
+                <td class="td"><span class="txt left"><%= m.description %></span></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <% }); %>
+</div>    
+    
 </body>
 </html>
