@@ -117,7 +117,7 @@ gulp.task('html', () => {
         }))
         .pipe(sitemap({
             'name':`map.html`,
-            'noDir': '최상위',
+            'noDir': '상위',
             'dest':`${prefix}`,
             'app':`${origin}`,
             'untitle':'-',
