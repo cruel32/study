@@ -16,13 +16,10 @@ const gulp = require('gulp'),
     merge = require('merge-stream'),
     iconfont = require('gulp-iconfont'),
     iconfontCss = require('gulp-iconfont-css'),
-    inject = require('gulp-inject'),
-
     sitemap = require('gulp-sitemap-generator'),
-
     origin = "source",
-    project = "build";
-prefix = "/jqPlugin";
+    project = "build",
+    prefix = "/jqPlugin";
 
 require('gulp-stats')(gulp);
 
@@ -155,21 +152,6 @@ gulp.task('css', () => {
         .pipe(gulp.dest(`${project}${prefix}/css`))
         .pipe(connect.reload());
 });
-
-gulp.task('inject', ()=>{
-    return gulp.src(`${origin}/files.json`)
-    .pipe(inject(gulp.src([
-        `./html/**/*.html`
-    ], {read: false}), {
-        starttag: '"{{ext}}": [',
-        endtag: ']',
-            transform(filepath, file, i, length) {
-                return '  "' + filepath + '"' + (i + 1 < length ? ',' : '');
-            }
-        }
-    ))
-    .pipe(gulp.dest(`${project}${prefix}`))
-})
 
 gulp.task('connect', function() {
     connect.server({
