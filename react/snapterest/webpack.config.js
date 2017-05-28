@@ -106,7 +106,7 @@ if (isProduction) {
 } else {
   // Development plugins
   plugins.push(
-    new ExtractTextPlugin('style-[name].css')
+    new ExtractTextPlugin('[name].css')
     // new webpack.HotModuleReplacementPlugin(),
     // new DashboardPlugin()
   );
@@ -116,31 +116,36 @@ if (isProduction) {
     {
       test: /\.(scss|sass|css)$/,
       include : cssSourcePath,
-      use: [
-        // {loader: 'style-loader'},
-        {
-          loader: 'css-loader',
-          options: {
+      use : ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use:   [
+          // {loader: 'style-loader'},
+          {
+            loader: 'css-loader',
+            options: {
+                sourceMap: true,
+                modules: true,
+                importLoaders: true,
+                localIdentName: "[local]"
+                // localIdentName: "[name]__[local]___[hash:base64:5]"
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options : {
               sourceMap: true,
-              modules: true,
-              importLoaders: true,
-              localIdentName: "[name]__[local]___[hash:base64:5]"
+              plugins : () => [autoprefixer]
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options : {
+              sourceMap: true
+            }
           }
-        },
-        {
-          loader: 'postcss-loader',
-          options : {
-            sourceMap: true,
-            plugins : () => [autoprefixer]
-          }
-        },
-        {
-          loader: 'sass-loader',
-          options : {
-            sourceMap: true
-          }
-        }
-      ],
+        ],
+      })
+      
     }
   );
 }
