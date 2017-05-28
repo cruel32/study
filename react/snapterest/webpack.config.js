@@ -117,13 +117,13 @@ if (isProduction) {
       test: /\.(scss|sass|css)$/,
       include : cssSourcePath,
       use : ExtractTextPlugin.extract({
-        fallback: 'style-loader',
+        // fallback: 'style-loader',
         use:   [
           // {loader: 'style-loader'},
           {
             loader: 'css-loader',
             options: {
-                sourceMap: true,
+                // sourceMap: true,
                 modules: true,
                 importLoaders: true,
                 localIdentName: "[local]"
@@ -133,15 +133,15 @@ if (isProduction) {
           {
             loader: 'postcss-loader',
             options : {
-              sourceMap: true,
+              // sourceMap: true,
               plugins : () => [autoprefixer]
             }
           },
           {
             loader: 'sass-loader',
-            options : {
-              sourceMap: true
-            }
+            // options : {
+            //   sourceMap: true
+            // }
           }
         ],
       })
