@@ -1,0 +1,33 @@
+Consumer Key (API Key)	95DHWLsuSqVSz7AfFoUjiCdwK
+Consumer Secret (API Secret)	gLrbbx0KwMXaDrbVsLPdWca96UIhzyJWtbSXvMWWaurqpsEHLV
+Access Level	Read and write (modify app permissions)
+Owner	coCoHeeee
+Owner ID	181117944
+
+
+
+Access Token	181117944-726q4bILHp3400JvfTtLvDZ9rYVtzP1I2WIlrntk
+Access Token Secret	suA78hKssmXSWNI3wd6se863gBxhaKRaDb0R20iucN8qx
+Access Level	Read and write
+Owner	coCoHeeee
+Owner ID	181117944
+
+
+git clone https://github.com/snapkite/snapkite-engine.git
+npm install --global node-gyp
+
+cd snapkite-engine/
+
+npm install
+
+copy example.config.json config.json
+
+cd snapkite-engine/filters
+
+git clone https://github.com/snapkite/snapkite-filter-is-possibly-sensitive.git
+git clone https://github.com/snapkite/snapkite-filter-has-mobile-photo.git
+git clone https://github.com/snapkite/snapkite-filter-is-retweet.git
+git clone https://github.com/snapkite/snapkite-filter-has-text.git
+
+
+

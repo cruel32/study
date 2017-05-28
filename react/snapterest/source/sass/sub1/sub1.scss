@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* sub1 */
+.wrap {
+    background:#555;
+    &:before {
+        display:block;
+        content:"";
+    }
+    .li {
+        border-bottom:2px solid #ccc;
+        a {
+            color:#000;
+        }
+    }
+    .lnk {
+        display:block;
+        position:absolute;
+        right:15px;
+        color:#333;
+    }
+}
