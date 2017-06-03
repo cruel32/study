@@ -1,6 +1,39 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="bookStore.xsl"?>
-<hello-world>
-    <greeter>An XSLT Programmer</greeter>
-    <greeting>Hello, World!</greeting>
-</hello-world>
+<bookStore>
+    <books>
+        <book>
+            <image>./book.jpg</image>
+            <category>도서</category>
+            <subscribe>R을 활용한 데이터 시각화...</subscribe>
+            <price>50,000</price>
+            <discount>10%</discount>
+            <priceReverse>45,000 (4,500)</priceReverse>
+            <amount>1</amount>
+            <total>45,000</total>
+            <shippingDate>2015-06-08</shippingDate>
+        </book>
+        <book>
+            <image>./book.jpg</image>
+            <category>도서</category>
+            <subscribe>자연어 텍스트 처리를 통한 검색 시스템 구축...</subscribe>
+            <price>40,000</price>
+            <discount>10%</discount>
+            <priceReverse>36,000 (3,600)</priceReverse>
+            <amount>1</amount>
+            <total>45,000</total>
+            <shippingDate>2015-06-08</shippingDate>
+        </book>
+        <book>
+            <image>./book.jpg</image>
+            <category>도서</category>
+            <subscribe>시작하세요! 엘라스틱서치</subscribe>
+            <price>30,000</price>
+            <discount>10%</discount>
+            <priceReverse>27,000 (2,700)</priceReverse>
+            <amount>1</amount>
+            <total>27,000</total>
+            <shippingDate>2015-06-08</shippingDate>
+        </book>
+    </books>
+</bookStore>
