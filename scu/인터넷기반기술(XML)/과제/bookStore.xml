@@ -6,33 +6,33 @@
             <image>./book.jpg</image>
             <category>도서</category>
             <subscribe>R을 활용한 데이터 시각화...</subscribe>
-            <price>50,000</price>
-            <discount>10%</discount>
-            <priceReverse>45,000 (4,500)</priceReverse>
+            <price>50000</price>
+            <discount unit="%" >10</discount>
+            <rPprice>45000</rPprice>
+            <reverse>5000</reverse>
             <amount>1</amount>
-            <total>45,000</total>
             <shippingDate>2015-06-08</shippingDate>
         </book>
         <book>
             <image>./book.jpg</image>
             <category>도서</category>
             <subscribe>자연어 텍스트 처리를 통한 검색 시스템 구축...</subscribe>
-            <price>40,000</price>
-            <discount>10%</discount>
-            <priceReverse>36,000 (3,600)</priceReverse>
-            <amount>1</amount>
-            <total>45,000</total>
+            <price>40000</price>
+            <discount unit="%" >10</discount>
+            <rPprice>36000</rPprice>
+            <reverse>4000</reverse>
+            <amount>2</amount>
             <shippingDate>2015-06-08</shippingDate>
         </book>
         <book>
             <image>./book.jpg</image>
             <category>도서</category>
             <subscribe>시작하세요! 엘라스틱서치</subscribe>
-            <price>30,000</price>
-            <discount>10%</discount>
-            <priceReverse>27,000 (2,700)</priceReverse>
-            <amount>1</amount>
-            <total>27,000</total>
+            <price>30000</price>
+            <discount unit="%" >10</discount>
+            <rPprice>27000</rPprice>
+            <reverse>3000</reverse>
+            <amount>3</amount>
             <shippingDate>2015-06-08</shippingDate>
         </book>
     </books>
