@@ -16,6 +16,10 @@
             <th>합계</th>
             <th>배송일</th>
           </tr>
+
+          
+
+
           <xsl:for-each select="books/book">
             <tr>
               <td>
@@ -37,19 +41,30 @@
               </td>
               <td>
                 <xsl:variable name="rev"><xsl:value-of select="price * discount div 100"/></xsl:variable>
-                <xsl:value-of select="format-number( price - $rev, '##,##,##,###')" />
-                (<xsl:value-of select="format-number( $rev , '##,##,##,###')" />)
+                <xsl:variable name="rprice"><xsl:value-of select="price - $rev" /></xsl:variable>
+                <xsl:value-of select="format-number($rprice, '##,##,##,###')"/>
+                (<xsl:value-of select="format-number($rev, '##,##,##,###')" />)
               </td>
               <td><xsl:value-of select="amount"/></td>
               <td><xsl:value-of select="format-number( (price - (price * discount ) div 100) * amount, '##,##,##,###') "/></td>
               <td><xsl:value-of select="shippingDate"/></td>
             </tr>
           </xsl:for-each>
+
           <tr>
             <td colspan="9" align="right">
+            
+              <xsl:variable name="totals">
+                <xsl:for-each select="books/book">
+                  <reverse><xsl:value-of select="price * discount div 100"/></reverse>
+                  <realprice><xsl:value-of select="price - (price * discount) div 100"/></realprice>
+                </xsl:for-each>
+              </xsl:variable>
+
+              <span><xsl:value-of select="sum($totals/reverse)"/></span>
+
               <span>총 상품 수 : <xsl:value-of select="sum(books/book/amount)"/>개,</span>
-              <span>총 상품금액 :
-              <xsl:value-of select="format-number(sum( books/book/price ), '##,##,##,###')"/>원,</span>
+              <span>총 상품금액 : <xsl:value-of select="format-number(sum( books/book/rPprice ), '##,##,##,###')"/>원,</span>
               <span>총 예상적립 포인트 : <xsl:value-of select="format-number(sum( (books/book/reverse )), '##,##,##,###')"/>원</span>
             </td>
           </tr>
