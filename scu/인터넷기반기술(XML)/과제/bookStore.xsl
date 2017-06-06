@@ -61,10 +61,10 @@
                 </xsl:for-each>
               </xsl:variable>
 
-              <span><xsl:value-of select="sum($totals/reverse)"/></span>
 
               <span>총 상품 수 : <xsl:value-of select="sum(books/book/amount)"/>개,</span>
               <span>총 상품금액 : <xsl:value-of select="format-number(sum( books/book/rPprice ), '##,##,##,###')"/>원,</span>
+              <!--<span><xsl:value-of select="sum($totals/reverse)"/></span>-->
               <span>총 예상적립 포인트 : <xsl:value-of select="format-number(sum( (books/book/reverse )), '##,##,##,###')"/>원</span>
             </td>
           </tr>
