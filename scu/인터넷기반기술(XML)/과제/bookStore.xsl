@@ -16,10 +16,6 @@
             <th>합계</th>
             <th>배송일</th>
           </tr>
-
-          
-
-
           <xsl:for-each select="books/book">
             <tr>
               <td>
