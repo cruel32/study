@@ -38,6 +38,7 @@
     "sass-loader": "^6.0.5",
     "snapkite-stream-client": "^1.0.3",
     "style-loader": "^0.18.1",
+    "webpack": "^3.0.0",
     "webpack-dev-server": "^2.4.5"
   }
 }
