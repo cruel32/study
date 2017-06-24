@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='author' content="최승희">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+</head>
+<body>
+
+<!-- form을 위한 템플릿-->
+<template id="form">
+    <div>
+        <label for="name">What's your name?</label>
+        <input type="text" v-bind:value="value" v-on:input="onInputEvent" v-bind:placeholder="placeholder" id="name">
+    </div>
+</template>
+
+<!-- Hello를 출력하는 템플릿-->
+<template id="hello">
+    <h1>{{msg}} {{user}}</h1>
+</template>
+
+
+
+<!-- greetings 템플릿-->
+<template id="greetings">
+    <div>
+        <form-component v-model="user" v-bind:placeholder="test1"></form-component>
+        <hello-component v-bind:user="user"></hello-component>
+    </div>
+</template>
+
+<div id="app">
+    <greetings-component></greetings-component>
+</div>
+
+<script>
+    Vue.component('form-component',{
+        template:'#form',
+        props:[
+            'value','placeholder'
+        ],
+        methods:{
+            onInputEvent(e){
+                console.log('e : ', e.target.value);
+                this.$emit('input', e.target.value);
+            }
+        }
+    });
+
+    var HelloComponent = Vue.component('hello-component',{
+        template:'#hello',
+        data(){
+            return {
+                msg:'hello'
+            }
+        },
+        props:['user']
+    });
+
+    Vue.component('greetings-component',{
+        template:'#greetings',
+        data(){
+            return {
+                user:'hero',
+                test1:'그지같다',
+                test2:'test2',
+            }
+        }
+    })
+
+    new Vue({
+        el:'#app'
+    });
+</script>
+</body>
+</html>
