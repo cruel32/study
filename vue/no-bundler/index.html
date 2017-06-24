@@ -10,7 +10,7 @@
 <body>
 <div id="app" class="container">
     <h1>{{title}}</h1>
-    <H2>{{title}}</H2>
+    <h2>{{title}}</h2>
     <div class="input-group">
         <input type="text" v-model="newItem" v-on:keyup.enter="addItem" placeholder="add shopping list of item" class="form-control">
         <span class="input-group-btn">
@@ -28,6 +28,8 @@
         <em>Change the title of your shopping list here</em>
         <input v-model="title">
     </div>
+
+    <h3></h3>
 </div>
 
 
@@ -57,6 +59,22 @@
             }
         }
     })
+
+    var obj = {};
+    var text = "";
+    var h3 = document.getElementsByTagName("h3")[0];
+
+    Object.defineProperty(obj,'key',{
+        get(){
+            return text;
+        },
+        set(val){
+            text = val;
+            console.log("text : ", text);
+            h3.innerHTML = text;
+        }
+    })
+
 </script>
 </body>
 </html>

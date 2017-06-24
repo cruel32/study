@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='author' content="최승희">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+</head>
+<body>
+<h1>Vue.js 2.0</h1>
+<div id="app" class="container">
+    <h2>{{title}}</h2>
+    <add-item-component></add-item-component>
+    <items-component></items-component>
+    <div class="footer">
+        <em>Change the title of your shopping list here</em>
+        <change-title-component></change-title-component>
+    </div>
+</div>
+<script>
+    let data = {
+        items: [
+            {text:'Bananas',checked:true},
+            {text:'Apples',checked:false},
+        ],
+        title:'My Shopping List',
+        newItem:''
+    }
+
+    let ItemsComponent = Vue.extend({
+        data(){
+            return data;
+        },
+        template:`
+            <ul>
+                <li v-for="item in items"
+                    :class="{'removed':item.checked}">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" v-model="item.checked"> {{item.text}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        `
+    })
+
+    let ChangeTitleCompontnt = Vue.extend({
+        data(){
+            return data;
+        },
+        template:`
+            <input v-model="title">
+        `
+    })
+
+    let AddItemCompontnt = Vue.extend({
+        data(){
+            return data;
+        },
+        methods:{
+            addItem(){
+                var text;
+                text=this.newItem.trim();
+                if(text){
+                    this.items.push({
+                        text:text,
+                        checked:false
+                    })
+                    this.newItem="";
+                }
+            }
+        },
+        template:`
+            <div class="input-group">
+                <input type="text" v-model="newItem" @keyup.enter="addItem" placeholder="add shopping list of item" class="form-control">
+                <span class="input-group-btn">
+                    <button @click="addItem" class="btn btn-default" type="button">Add!</button>
+                </span>
+            </div>
+        `
+    })
+
+    Vue.component('items-component', ItemsComponent);
+    Vue.component('change-title-component', ChangeTitleCompontnt);
+    Vue.component('add-item-component', AddItemCompontnt);
+
+    new Vue({
+        el:'#app',
+        data:data
+    })
+
+</script>
+</body>
+</html>

@@ -70,16 +70,16 @@ module.exports = {
                 }
               },
               {
-                  loader: "sass-loader",
-                  options: {
-                      sourceMap: true
-                  }
+                loader: "sass-loader",
+                options: {
+                    sourceMap: true
+                }
               }
             ]
           }),
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/i,
+          test: /\.(jpeg|png|gif|svg)$/i,
           exclude: /node_modules/,
           loader: 'file-loader?name=images/[name].[ext]'
         },
