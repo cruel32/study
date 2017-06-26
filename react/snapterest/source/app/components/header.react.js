@@ -5,6 +5,7 @@ let headerStyle = {
   display: 'inline-block',
   margin: '20px 10px'
 };
+
 let Header = React.createClass({
   getDefaultProps(){
     return {
@@ -17,5 +18,4 @@ let Header = React.createClass({
     );
   } 
 });
-
 module.exports = Header;
