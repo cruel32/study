@@ -37,14 +37,14 @@ gulp.task('js', () => {
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(minify({
-            ext: {
-                src:'-debug.js',
-                min: '.js'
-            },
-            // exclude: ['tasks'],
-            ignoreFiles: ['-min.js']
-        }))
+        // .pipe(minify({
+        //     ext: {
+        //         src:'-debug.js',
+        //         min: '.js'
+        //     },
+        //     // exclude: ['tasks'],
+        //     ignoreFiles: ['-min.js']
+        // }))
         .pipe(gulp.dest(`${project}${prefix}/js`))
         .pipe(connect.reload());
 });
@@ -81,7 +81,7 @@ gulp.task('sprite', () => {
         .pipe(csscomb({
             configPath: 'hint/.csscomb.json'
         }))
-        .pipe(cssmin())
+        // .pipe(cssmin())
         .pipe(gulp.dest(`${project}${prefix}/css`));
     return merge(imgStream, cssStream);
 });
@@ -148,7 +148,7 @@ gulp.task('css', () => {
             return string.replace(/[ \t]+\n/g, '\n').replace(/\n\n/g, '\n');
         */
         .pipe(sourcemaps.write())
-        .pipe(cssmin())
+        // .pipe(cssmin())
         .pipe(gulp.dest(`${project}${prefix}/css`))
         .pipe(connect.reload());
 });

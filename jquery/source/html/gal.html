@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>slider3d</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name='author' content="최승희">
+@@include('header.html')
+<style>
+    .blue {color:blue;}
+    .red {color:red;}
+</style>
+</head>
+<body>
+
+<div id="gal">
+    <!--<ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        ...
+        <li>100</li>
+    </ul>-->
+</div>
+
+<div id="gal2">
+</div>
+
+<script>
+    var str = "갈댈";
+    var str2 = "갈댈";
+    var str3 = "1";
+    var num = 1;
+    // console.log("str : ", str);
+    // for(초기값; 비교식; 연산){
+    //  코드;
+    // }
+
+    // <ul>
+    //     <li class="blue">1</li>
+    //     <li class="red">2</li>
+    //     <li class="blue">3</li>
+    //     <li class="red">4</li>
+    //     ...
+    //     <li class="red">20</li>
+    // </ul>
+    
+    // var html = "<ul>";
+    // console.log("html : ", html);
+
+    // for(var i=1;i<=20;i++){
+    //     if(i%2==0){
+    //         html+='<li class="red">'+i+'</li>'
+    //     } else{
+    //         html+='<li class="blue">'+i+'</li>'
+    //     }
+    //     console.log(i+"번째 html : ", html);
+    // }
+    // html+="</ul>";
+    // console.log("html : ", html);
+
+    // $("#gal").html(html);
+
+    // for(var i=0; i<5; i++){
+    //     for(var k=0; k<5; k++){
+    //         for(var x=0; x<5; x++){
+    //         }
+    //     }
+    // }
+
+
+    //이중 반복문
+    //대메뉴 li를 5개 만들고, 그 각각의 대메뉴안에 소메뉴를 3개를 만들라 
+    var html2 = "<ul>";
+    
+    for(var i=0; i<=4; i++){
+        html2+="<li>"+(i+1)+"번째"
+        html2+="<ul>"
+        for(var j=0; j<=2; j++){
+           html2+="<li>"+j+"문자</li>"; 
+        }
+        html2+="</ul>"
+        html2+="</li>"
+    }
+    
+    html2 += "</ul>";
+    console.log("html2 : ", html2);
+    
+    $("#gal2").html(html2);
+
+</script>
+</body>
+</html>
