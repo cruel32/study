@@ -16,6 +16,7 @@ const gulp = require('gulp'),
     merge = require('merge-stream'),
     iconfont = require('gulp-iconfont'),
     iconfontCss = require('gulp-iconfont-css'),
+    inlineCss = require('gulp-inline-css'),
     sitemap = require('gulp-sitemap-generator'),
     origin = "source",
     project = "build",
@@ -152,6 +153,14 @@ gulp.task('css', () => {
         .pipe(gulp.dest(`${project}${prefix}/css`))
         .pipe(connect.reload());
 });
+
+gulp.task('inlineCss',function(){
+    return gulp.src([`${origin}/inline/**/*.html`])
+        .pipe(newer(`${origin}/inline/**/*.html`))
+        .pipe(inlineCss())
+        .pipe(gulp.dest(`${project}${prefix}`))
+        .pipe(connect.reload());
+})
 
 gulp.task('connect', function() {
     connect.server({
