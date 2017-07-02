@@ -157,7 +157,12 @@ gulp.task('css', () => {
 gulp.task('inlineCss',function(){
     return gulp.src([`${origin}/inline/**/*.html`])
         .pipe(newer(`${origin}/inline/**/*.html`))
-        .pipe(inlineCss())
+        .pipe(inlineCss({
+            applyStyleTags: true,
+            applyLinkTags: true,
+            removeStyleTags: true,
+            removeLinkTags: true
+        }))
         .pipe(gulp.dest(`${project}${prefix}`))
         .pipe(connect.reload());
 })
